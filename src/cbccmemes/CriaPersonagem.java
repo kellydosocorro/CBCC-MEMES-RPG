@@ -9,6 +9,7 @@ import cbccmemes.mochila.Arma;
 import cbccmemes.personagens.Aluno;
 import java.awt.Frame;
 import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -35,10 +36,10 @@ public class CriaPersonagem extends javax.swing.JDialog {
     private void setListArmas(String classe, Arma armas[]){
         armas_disponiveis = Aluno.getArmasDisponiveis(classe, armas);
         String list_arms[] = new String[armas_disponiveis.length];
-        for (int i=0; i<armas_disponiveis.length; i++){
-            list_arms[i] = armas[i].getNome();
+        for ( int i=0; i<armas_disponiveis.length; i++ ){
+            list_arms[i] = armas_disponiveis[i].getNome();
         }
-        ArmasSelect.setModel(new javax.swing.DefaultComboBoxModel<>(list_arms));
+        ArmasSelect.setModel(new DefaultComboBoxModel<>(list_arms));
     }
     
     private String getClasseSelected(){
@@ -60,7 +61,7 @@ public class CriaPersonagem extends javax.swing.JDialog {
         ClassesSelect = new javax.swing.JComboBox<>();
         NomeLabel1 = new javax.swing.JLabel();
         NomeLabel2 = new javax.swing.JLabel();
-        hp_value = new javax.swing.JSpinner();
+        crg_value = new javax.swing.JSpinner();
         NomeLabel3 = new javax.swing.JLabel();
         ataque_value = new javax.swing.JSpinner();
         NomeLabel4 = new javax.swing.JLabel();
@@ -100,12 +101,12 @@ public class CriaPersonagem extends javax.swing.JDialog {
         NomeLabel2.setText("Velocidade:");
         NomeLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        hp_value.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
-        hp_value.setModel(new javax.swing.SpinnerNumberModel(1000, 1000, null, 1));
-        hp_value.setEnabled(false);
+        crg_value.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        crg_value.setModel(new javax.swing.SpinnerNumberModel(1000, 1000, null, 1));
+        crg_value.setEnabled(false);
 
         NomeLabel3.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
-        NomeLabel3.setText("HP:");
+        NomeLabel3.setText("CRG:");
         NomeLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         ataque_value.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
@@ -149,7 +150,7 @@ public class CriaPersonagem extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(53, 53, 53)
-                                .addComponent(hp_value, javax.swing.GroupLayout.PREFERRED_SIZE, 66, Short.MAX_VALUE))
+                                .addComponent(crg_value, javax.swing.GroupLayout.PREFERRED_SIZE, 66, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(NomeLabel3)
                                 .addGap(0, 0, Short.MAX_VALUE))
@@ -188,7 +189,7 @@ public class CriaPersonagem extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NomeLabel3)
-                    .addComponent(hp_value, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(crg_value, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(NomeLabel2)
                     .addComponent(velocidade_value, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -211,18 +212,19 @@ public class CriaPersonagem extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        if ( TelaPrincipal.isEmpty(user) ) user = new Aluno();
+        
         user.setNome(TextNome.getText());
         user.setClasse_aluno(ClassesSelect.getItemAt(ClassesSelect.getSelectedIndex()));
-        user.setArma_equipada(armas_disponiveis[ArmasSelect.getSelectedIndex()]);
-        
-        
-        int ataque = (int) ataque_value.getValue();
-        int defesa = (int) defesa_value.getValue();
-        int velocidade = (int) velocidade_value.getValue();
+        user.setArma_batalha(armas_disponiveis[0]);
+        user.setAtaque((int) ataque_value.getValue());
+        user.setDefesa((int) defesa_value.getValue());
+        user.setVelocidade((int) velocidade_value.getValue());
+        user.setVida((int) crg_value.getValue());
+        user.setArmaMochila(0, armas_disponiveis[ClassesSelect.getSelectedIndex()]);
         
         aux.setUser(user);
-        System.err.println("Teste"+user.getClasse_aluno());
-        System.err.println("Teste"+armas_disponiveis[ArmasSelect.getSelectedIndex()].getNome());
+        
         //System.err.println("Teste: "+velocidade);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -285,8 +287,8 @@ public class CriaPersonagem extends javax.swing.JDialog {
     private javax.swing.JLabel NomeLabel4;
     private javax.swing.JTextField TextNome;
     private javax.swing.JSpinner ataque_value;
+    private javax.swing.JSpinner crg_value;
     private javax.swing.JSpinner defesa_value;
-    private javax.swing.JSpinner hp_value;
     private javax.swing.JButton jButton1;
     private javax.swing.JSpinner velocidade_value;
     // End of variables declaration//GEN-END:variables

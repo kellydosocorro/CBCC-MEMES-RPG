@@ -38,6 +38,7 @@ public class TelaPrincipal extends javax.swing.JFrame{
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CBCCMEMES");
@@ -52,13 +53,22 @@ public class TelaPrincipal extends javax.swing.JFrame{
             }
         });
 
+        jButton2.setText("Mostrar Personagem");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(96, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addContainerGap(82, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(87, 87, 87))
         );
         layout.setVerticalGroup(
@@ -66,7 +76,9 @@ public class TelaPrincipal extends javax.swing.JFrame{
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(190, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addGap(187, 187, 187))
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
+                .addGap(146, 146, 146))
         );
 
         pack();
@@ -74,12 +86,16 @@ public class TelaPrincipal extends javax.swing.JFrame{
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        this.setUser(new Aluno());
         CriaPersonagem cr = new CriaPersonagem(this, this);
         cr.setVisible(true);
-        if (user != null)
-            System.err.println("Teste: "+user.getNome());
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        if (isEmpty(user)){
+            JOptionPane.showMessageDialog(rootPane,"Nenhum Personagem Criado");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     public static void main(String args[]) {
         try {
@@ -110,6 +126,7 @@ public class TelaPrincipal extends javax.swing.JFrame{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     // End of variables declaration//GEN-END:variables
     private Aluno user;
     private Arma arms_jogo[] = {new Arma("Bisturi", 100,"Biológicas"), new Arma("Espada", 100,"Biológicas"),

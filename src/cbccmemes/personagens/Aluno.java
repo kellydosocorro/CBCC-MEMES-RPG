@@ -9,11 +9,10 @@ public class Aluno extends Personagem{
     private static final String nomes_alunos[] = {"Lucas","Ian","José","Jairo","Kelly"};
     private static final String classes_personagem[] = {"Biológicas","Exatas","Humanas"};
     
-    private Item itens[];
-    private Arma armas[];
+    private Item itens[] = new Item[getLIMITE_MOCHILA()];
+    private Arma armas[] = new Arma[getLIMITE_MOCHILA()];
     private int barra_experiencia;
     private String classe_aluno;
-    private Arma arma_equipada;
     private Item item_equipado;
 
     public Aluno(String nome, String classe_aluno, int nivel, int vida, int ataque, int defesa, int velocidade, Item item_batalha, Arma arma_batalha, Ambiente ambiente) {
@@ -25,14 +24,6 @@ public class Aluno extends Personagem{
     public Aluno() {
         this("Aluno", "Classe_Aluno", 1, 1000, 150, 150, 150, null, null, null);
         this.barra_experiencia = 0;
-    }
-
-    public Arma getArma_equipada() {
-        return arma_equipada;
-    }
-
-    public void setArma_equipada(Arma arma_equipada) {
-        this.arma_equipada = arma_equipada;
     }
 
     public Item getItem_equipado() {
@@ -64,11 +55,20 @@ public class Aluno extends Personagem{
     }
 
     public void setBarra_experiencia(int barra_experiencia) {
-        this.barra_experiencia += barra_experiencia;
+        this.barra_experiencia = barra_experiencia;
     }
 
     public Arma[] getArmas() {
         return armas;
+    }
+
+    public void setArmas(Arma[] armas) {
+        this.armas = armas;
+    }
+    
+    public void setArmaMochila(int indice, Arma arma){
+        if ( indice >= 0 && indice < getLIMITE_MOCHILA())
+            this.getArmas()[indice] = arma;
     }
     
     public static Arma[] getArmasDisponiveis(String classe, Arma armas[]){
@@ -82,15 +82,14 @@ public class Aluno extends Personagem{
             int cont_aux = 0;
             for (int i=0; i<armas.length; i++) {
                 if (Arma.armaPertenceClasse(armas[i], classe)){
-                    //aux[cont_aux] = arma.getNome();
                     indices[cont_aux] = i;
                     cont_aux++;
                 }
             }
             Arma aux[] = new Arma[cont_aux];
-            for ( int i=0; i<cont_aux; i++ )
+            for ( int i=0; i<cont_aux; i++ ){
                 aux[i] = armas[indices[i]];
-                
+            }
             return aux;
         }
     }

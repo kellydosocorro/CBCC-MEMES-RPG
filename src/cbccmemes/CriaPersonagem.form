@@ -35,7 +35,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                              <Component id="hp_value" pref="66" max="32767" attributes="0"/>
+                              <Component id="crg_value" pref="66" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="NomeLabel3" min="-2" max="-2" attributes="0"/>
@@ -86,7 +86,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="NomeLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="hp_value" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="crg_value" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="NomeLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="velocidade_value" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -179,7 +179,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JSpinner" name="hp_value">
+    <Component class="javax.swing.JSpinner" name="crg_value">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Ubuntu" size="12" style="0"/>
@@ -195,7 +195,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Ubuntu" size="12" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="HP:"/>
+        <Property name="text" type="java.lang.String" value="CRG:"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
           <Color id="Cursor Padr&#xe3;o"/>
         </Property>
