@@ -1,16 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cbccmemes.ambientes;
 
 import cbccmemes.personagens.Personagem;
 
-/**
- *
- * @author 201604940039
- */
 public abstract class Ambiente {
     private final String nome;
     private int nivel_minimo;
