@@ -4,6 +4,7 @@ import cbccmemes.mochila.*;
 import java.util.Random;
 
 public abstract class Personagem{
+    
     private static final int LIMITE_MOCHILA = 3;
     
     private String nome;

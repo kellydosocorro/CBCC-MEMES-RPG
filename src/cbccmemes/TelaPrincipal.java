@@ -112,5 +112,8 @@ public class TelaPrincipal extends javax.swing.JFrame{
     private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
     private Aluno user;
-    private Arma arms_jogo[] = {new Arma("Cacete", 100,"Biológicas"), new Arma("Espada", 100,"Biológicas"), new Arma("Canhão", 300, 5), new Arma("Arco", 250, "Humanas"), new Arma("PC", 200, "Exatas")};
+    private Arma arms_jogo[] = {new Arma("Bisturi", 100,"Biológicas"), new Arma("Espada", 100,"Biológicas"),
+        new Arma("Canhão", 300, 5), new Arma("Arco", 250, "Humanas"), new Arma("PC", 200, "Exatas")
+    
+    };
 }
