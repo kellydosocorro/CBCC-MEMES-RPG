@@ -9,15 +9,38 @@ public class Aluno extends Personagem{
     private static final String nomes_alunos[] = {"Lucas","Ian","José","Jairo","Kelly"};
     private static final String classes_personagem[] = {"Biológicas","Exatas","Humanas"};
     
-    private Item itens[] = new Item[getLIMITE_MOCHILA()];
-    private Arma armas[] = new Arma[getLIMITE_MOCHILA()];
+    private Item itens[];
+    private Arma armas[];
     private int barra_experiencia;
     private String classe_aluno;
+    private Arma arma_equipada;
+    private Item item_equipado;
 
-    public Aluno(String nome, int nivel, int ataque, int defesa, String classe_aluno, Ambiente ambiente) {
-        super(nome, nivel, ataque, defesa, ambiente);
+    public Aluno(String nome, String classe_aluno, int nivel, int vida, int ataque, int defesa, int velocidade, Item item_batalha, Arma arma_batalha, Ambiente ambiente) {
+        super(nome, nivel, vida, ataque, defesa, velocidade, item_batalha, arma_batalha, ambiente);
         this.barra_experiencia = 0;
         this.classe_aluno = classe_aluno;
+    }
+    
+    public Aluno() {
+        this("Aluno", "Classe_Aluno", 1, 1000, 150, 150, 150, null, null, null);
+        this.barra_experiencia = 0;
+    }
+
+    public Arma getArma_equipada() {
+        return arma_equipada;
+    }
+
+    public void setArma_equipada(Arma arma_equipada) {
+        this.arma_equipada = arma_equipada;
+    }
+
+    public Item getItem_equipado() {
+        return item_equipado;
+    }
+
+    public void setItem_equipado(Item item_equipado) {
+        this.item_equipado = item_equipado;
     }
     
     public void procurarItem(){
@@ -26,6 +49,14 @@ public class Aluno extends Personagem{
 
     public static String[] getClasses_personagem() {
         return classes_personagem;
+    }
+    
+    public String getClasse_aluno(){
+        return classe_aluno;
+    }
+
+    public void setClasse_aluno(String classe_aluno) {
+        this.classe_aluno = classe_aluno;
     }
 
     public int getBarra_experiencia() {
@@ -39,14 +70,10 @@ public class Aluno extends Personagem{
     public Arma[] getArmas() {
         return armas;
     }
-
-    public String getClasse_aluno() {
-        return classe_aluno;
-    }
     
-    public static String[] getArmasDisponiveis(String classe, Arma armas[]){
+    public static Arma[] getArmasDisponiveis(String classe, Arma armas[]){
         if ( TelaPrincipal.isEmpty(armas) ){
-            String teste[] = {"Teste"};
+            Arma teste[] = {};
             return teste;
         }
         else{
@@ -60,9 +87,9 @@ public class Aluno extends Personagem{
                     cont_aux++;
                 }
             }
-            String aux[] = new String[cont_aux];
+            Arma aux[] = new Arma[cont_aux];
             for ( int i=0; i<cont_aux; i++ )
-                aux[i] = armas[indices[i]].getNome();
+                aux[i] = armas[indices[i]];
                 
             return aux;
         }
