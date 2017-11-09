@@ -1,17 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cbccmemes.mochila;
 
 import cbccmemes.TelaPrincipal;
 import cbccmemes.personagens.Personagem;
 
-/**
- *
- * @author 201604940039
- */
 public class Arma {
     private final String nome;
     private int poder_ataque;
