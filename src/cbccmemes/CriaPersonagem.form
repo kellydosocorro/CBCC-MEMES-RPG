@@ -4,6 +4,7 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
     <Property name="title" type="java.lang.String" value="Cria&#xe7;&#xe3;o de Personagem"/>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -24,16 +25,17 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="SelectClasses" max="32767" attributes="0"/>
-                  <Component id="jTextField1" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="jButton1" max="32767" attributes="0"/>
+                  <Component id="ClassesSelect" alignment="0" max="32767" attributes="0"/>
+                  <Component id="TextNome" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                              <Component id="hp_value" pref="66" max="32767" attributes="0"/>
+                              <Component id="crg_value" pref="66" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="NomeLabel3" min="-2" max="-2" attributes="0"/>
@@ -56,15 +58,14 @@
                           <Component id="velocidade_value" min="-2" pref="70" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="SelectArmas" alignment="1" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
+                  <Component id="ArmasSelect" alignment="1" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="NomeLabel" min="-2" max="-2" attributes="0"/>
                           <Component id="ClasseLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="ClasseLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="ArmaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="250" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -77,15 +78,15 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="NomeLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
+              <Component id="TextNome" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="ClasseLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="SelectClasses" min="-2" max="-2" attributes="0"/>
+              <Component id="ClassesSelect" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="NomeLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="hp_value" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="crg_value" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="NomeLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="velocidade_value" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -97,12 +98,12 @@
                   <Component id="defesa_value" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="ClasseLabel1" min="-2" max="-2" attributes="0"/>
+              <Component id="ArmaLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="SelectArmas" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="46" max="32767" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <Component id="ArmasSelect" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="59" max="32767" attributes="0"/>
+              <Component id="jButton1" min="-2" pref="40" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -119,7 +120,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField1">
+    <Component class="javax.swing.JTextField" name="TextNome">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Ubuntu" size="12" style="0"/>
@@ -140,7 +141,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="SelectClasses">
+    <Component class="javax.swing.JComboBox" name="ClassesSelect">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Ubuntu" size="12" style="0"/>
@@ -149,6 +150,9 @@
           <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(Aluno.getClasses_personagem())" type="code"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ClassesSelectActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
@@ -175,7 +179,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JSpinner" name="hp_value">
+    <Component class="javax.swing.JSpinner" name="crg_value">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Ubuntu" size="12" style="0"/>
@@ -191,7 +195,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Ubuntu" size="12" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="HP:"/>
+        <Property name="text" type="java.lang.String" value="CRG:"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
           <Color id="Cursor Padr&#xe3;o"/>
         </Property>
@@ -203,7 +207,7 @@
           <Font name="Ubuntu" size="12" style="0"/>
         </Property>
         <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-          <SpinnerModel initial="150" maximum="450" numberType="java.lang.Integer" stepSize="10" type="number"/>
+          <SpinnerModel initial="150" maximum="450" minimum="0" numberType="java.lang.Integer" stepSize="10" type="number"/>
         </Property>
       </Properties>
     </Component>
@@ -224,7 +228,7 @@
           <Font name="Ubuntu" size="12" style="0"/>
         </Property>
         <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-          <SpinnerModel initial="150" maximum="450" numberType="java.lang.Integer" stepSize="10" type="number"/>
+          <SpinnerModel initial="150" maximum="450" minimum="0" numberType="java.lang.Integer" stepSize="10" type="number"/>
         </Property>
       </Properties>
     </Component>
@@ -234,11 +238,11 @@
           <Font name="Ubuntu" size="12" style="0"/>
         </Property>
         <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-          <SpinnerModel initial="150" maximum="450" numberType="java.lang.Integer" stepSize="10" type="number"/>
+          <SpinnerModel initial="150" maximum="450" minimum="0" numberType="java.lang.Integer" stepSize="10" type="number"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="ClasseLabel1">
+    <Component class="javax.swing.JLabel" name="ArmaLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Ubuntu" size="12" style="0"/>
@@ -249,7 +253,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="SelectArmas">
+    <Component class="javax.swing.JComboBox" name="ArmasSelect">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Ubuntu" size="12" style="0"/>
@@ -261,7 +265,10 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jButton1"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Ubuntu" size="14" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Salvar Dados"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
