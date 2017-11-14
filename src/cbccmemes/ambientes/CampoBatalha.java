@@ -5,8 +5,9 @@ import cbccmemes.personagens.Personagem;
 
 public class CampoBatalha extends Ambiente{
     Aluno adversarios[];
-    public CampoBatalha(String nome, int nivel_minimo, Personagem personagem, Ambiente anterior) {
-        super(nome, nivel_minimo, personagem, anterior);
+
+    public CampoBatalha(String nome, int nivel_minimo) {
+        super(nome, nivel_minimo);
     }
     
 }

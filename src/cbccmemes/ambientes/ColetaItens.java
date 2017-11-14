@@ -7,8 +7,8 @@ public class ColetaItens extends Ambiente{
     //Definir array de Itens abaixo
     private final Item itens[] = {new Item(), new Item()};
 
-    public ColetaItens(Item item, String nome, int nivel_minimo, Personagem personagem, Ambiente anterior) {
-        super(nome, nivel_minimo, personagem, anterior);
+    public ColetaItens(Item item, String nome, int nivel_minimo, Ambiente anterior) {
+        super(nome, nivel_minimo);
         this.item = item;
     }
 
@@ -20,8 +20,8 @@ public class ColetaItens extends Ambiente{
         return item;
     }
     
-    public Item procuraItem(){
-        setItem(Item.getItemAleatorio(getPersonagem(), itens));
+    public Item procuraItem(Personagem person){
+        setItem(Item.getItemAleatorio(person, itens));
         
         return getItem();
     }

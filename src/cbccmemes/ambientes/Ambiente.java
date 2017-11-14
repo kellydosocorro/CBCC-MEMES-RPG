@@ -5,14 +5,11 @@ import cbccmemes.personagens.Personagem;
 public abstract class Ambiente {
     private final String nome;
     private int nivel_minimo;
-    private Personagem personagem;
-    private Ambiente anterior;
+    private Ambiente anterior = null;
 
-    public Ambiente(String nome, int nivel_minimo, Personagem personagem, Ambiente anterior) {
+    public Ambiente(String nome, int nivel_minimo) {
         this.nome = nome;
         this.nivel_minimo = nivel_minimo;
-        this.personagem = personagem;
-        this.anterior = anterior;
     }
 
     public int getNivel_minimo() {
@@ -26,8 +23,8 @@ public abstract class Ambiente {
     public Ambiente getAnterior() {
         return anterior;
     }
-    
-    public Personagem getPersonagem(){
-        return personagem;
+
+    public void setAnterior(Ambiente anterior) {
+        this.anterior = anterior;
     }
 }
