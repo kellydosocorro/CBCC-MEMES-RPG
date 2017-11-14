@@ -129,6 +129,7 @@ public class TelaPrincipal extends javax.swing.JFrame{
     private javax.swing.JButton jButton2;
     // End of variables declaration//GEN-END:variables
     private Aluno user;
+<<<<<<< HEAD
     private Arma arms_jogo[] = { 
         
         // Armas comuns
@@ -142,6 +143,10 @@ public class TelaPrincipal extends javax.swing.JFrame{
                 
                     // Arma de Humanas
                     new Arma("Miçangas", 150,"Humanas"), new Arma("Xerox", 250,"Humanas"), new Arma("Ocupação", 350,"Humanas")
+=======
+    private Arma arms_jogo[] = {new Arma("Bisturi", 100,"Biológicas"), new Arma("Espada", 100,"Biológicas"),
+        new Arma("Canhão", 300, 5), new Arma("Arco", 250, "Humanas"), new Arma("PC", 200, "Exatas")
+>>>>>>> 7fbc30e2a717efee3a46f3f31977950b8d824960
     
     };
 }
