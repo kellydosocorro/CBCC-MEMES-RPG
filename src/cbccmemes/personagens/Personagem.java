@@ -16,6 +16,7 @@ public abstract class Personagem{
     private Item item_batalha;
     private Arma arma_batalha;
     private Ambiente ambiente;
+    private String url_imagem;
 
     public Personagem(String nome, int nivel, int vida, int ataque, int defesa, int velocidade, Item item_batalha, Arma arma_batalha, Ambiente ambiente) {
         this.nome = nome;
@@ -27,19 +28,6 @@ public abstract class Personagem{
         this.item_batalha = item_batalha;
         this.arma_batalha = arma_batalha;
         this.ambiente = ambiente;
-    }
-    
-    public static Personagem geraPersonagemAletarorio(int nivel){
-        Random r = new Random();
-        
-        switch(r.nextInt(3)){
-            case 0:
-                return null;
-            case 1:
-                return null;
-            default:
-                return null;
-        }
     }
     
     public int getNivel() {
@@ -118,6 +106,14 @@ public abstract class Personagem{
         this.velocidade = velocidade;
     }
     
+    public String getUrl_imagem() {
+        return url_imagem;
+    }
+
+    public void setUrl_imagem(String url_imagem) {
+        this.url_imagem = url_imagem;
+    }
+    
     public void atacar(Personagem adversario){
         if (adversario.getItem_batalha() != null){
             
@@ -131,12 +127,5 @@ public abstract class Personagem{
             
             adversario.setVida(vida_adv);
         }
-    }
-    
-    public static String getNomeAleatorio(String nomes[]){
-        Random r = new Random();
-        int id_nome = r.nextInt(nomes.length);
-        
-        return nomes[id_nome];
     }
 }

@@ -5,18 +5,27 @@
  */
 package cbccmemes;
 
+import cbccmemes.ambientes.Ambiente;
+import cbccmemes.ambientes.CompraArmas;
+import java.awt.Frame;
+
 /**
  *
  * @author 201604940040
  */
-public class Ambientes extends javax.swing.JDialog {
+public class TelaAmbientes extends javax.swing.JDialog {
 
     /**
      * Creates new form Ambientes
      */
-    public Ambientes(java.awt.Frame parent, boolean modal) {
+    public TelaAmbientes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+    }
+    
+    public TelaAmbientes(Frame parent, TelaPrincipal telap){
+        this(parent, true);
+        parent.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -108,21 +117,23 @@ public class Ambientes extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Ambientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAmbientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Ambientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAmbientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Ambientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAmbientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Ambientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAmbientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Ambientes dialog = new Ambientes(new javax.swing.JFrame(), true);
+                TelaAmbientes dialog = new TelaAmbientes(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -141,4 +152,5 @@ public class Ambientes extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
+    Ambiente ambientes_jogo[];
 }
