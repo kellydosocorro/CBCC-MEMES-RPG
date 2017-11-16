@@ -1,16 +1,16 @@
 package cbccmemes.ambientes;
 
-import cbccmemes.personagens.Personagem;
-
 public abstract class Ambiente {
     private final String nome;
-    private int nivel_minimo;
+    private final int nivel_minimo;
     private Ambiente anterior = null;
-    private Ambiente ambientes[];
+    private Ambiente ambientes_internos[];
+    private String url_image;
 
-    public Ambiente(String nome, int nivel_minimo) {
+    public Ambiente(String nome, int nivel_minimo, String url_image) {
         this.nome = nome;
         this.nivel_minimo = nivel_minimo;
+        this.url_image = url_image;
     }
 
     public int getNivel_minimo() {
@@ -29,11 +29,19 @@ public abstract class Ambiente {
         this.anterior = anterior;
     }
 
-    public Ambiente[] getAmbientes() {
-        return ambientes;
+    public String getUrl_image() {
+        return url_image;
     }
 
-    public void setAmbientes(Ambiente[] ambientes) {
-        this.ambientes = ambientes;
+    public void setUrl_image(String url_image) {
+        this.url_image = url_image;
+    }
+
+    public Ambiente[] getAmbientes_internos() {
+        return ambientes_internos;
+    }
+
+    public void setAmbientes_internos(Ambiente[] ambientes_internos) {
+        this.ambientes_internos = ambientes_internos;
     }
 }

@@ -10,13 +10,6 @@ public class TelaPrincipal extends javax.swing.JFrame{
     public TelaPrincipal() {
         initComponents();
     }
-
-    @Override
-    public void setVisible(boolean b) {
-        if (isEmpty(user))
-            
-        super.setVisible(b); 
-    }
     
     public static boolean isEmpty(Object obj){
         return (obj==null);
@@ -117,7 +110,13 @@ public class TelaPrincipal extends javax.swing.JFrame{
         if (!TelaPrincipal.isEmpty(user)){
             inicio_jogo = true;
             jButton1.setEnabled(!inicio_jogo);
-        }        
+            TelaAmbientes aux = new TelaAmbientes(this, this);
+            setVisible(false);
+            aux.setVisible(true);
+            setVisible(true);
+        }else{
+            jButton2ActionPerformed(evt);
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     public static void main(String args[]) {
@@ -155,9 +154,10 @@ public class TelaPrincipal extends javax.swing.JFrame{
     private boolean inicio_jogo = false;
     private Aluno user;
 
+    //Ver possibilidade de mudança para ArrayList
     private final Arma arms_jogo[] = {        
         // Armas comuns
-        new Arma("TCC", 500, 7), new Arma("Livro", 300, 0), new Arma("Caderno", 100, 0),  new Arma("Celular tocando", 200, 0), new Arma("Catuaba", 400, 2),        
+        new Arma("TCC", 500, 7), new Arma("Livro", 300), new Arma("Caderno", 100),  new Arma("Celular tocando", 200), new Arma("Catuaba", 400, 2),
             // Armas de Biológicas
             new Arma("Bisturi", 150,"Biológicas"), new Arma("Vírus", 350,"Biológicas"), new Arma("Injeção", 250,"Biológicas"),            
                 // Arma de Exatas
@@ -166,5 +166,5 @@ public class TelaPrincipal extends javax.swing.JFrame{
                     new Arma("Miçangas", 150,"Humanas"), new Arma("Xerox", 250,"Humanas"), new Arma("Ocupação", 350,"Humanas")
     };
     
-    private final Ambiente ambientes_jogo[] = {new CampoBatalha("ICEN", 1)};
+    
 }

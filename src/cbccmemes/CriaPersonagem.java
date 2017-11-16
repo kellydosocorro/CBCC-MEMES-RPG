@@ -8,6 +8,7 @@ package cbccmemes;
 import cbccmemes.mochila.Arma;
 import cbccmemes.personagens.Aluno;
 import java.awt.Frame;
+import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 
 /**
@@ -140,7 +141,6 @@ public class CriaPersonagem extends javax.swing.JDialog {
 
         crg_value.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         crg_value.setModel(new javax.swing.SpinnerNumberModel(1000, 850, 1150, 10));
-        crg_value.setRequestFocusEnabled(false);
         crg_value.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 crg_valueStateChanged(evt);
@@ -153,6 +153,11 @@ public class CriaPersonagem extends javax.swing.JDialog {
 
         ataque_value.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         ataque_value.setModel(new javax.swing.SpinnerNumberModel(150, 0, 300, 10));
+        ataque_value.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                ataque_valueStateChanged(evt);
+            }
+        });
 
         NomeLabel4.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         NomeLabel4.setText("Defesa:");
@@ -160,9 +165,19 @@ public class CriaPersonagem extends javax.swing.JDialog {
 
         velocidade_value.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         velocidade_value.setModel(new javax.swing.SpinnerNumberModel(150, 0, 300, 10));
+        velocidade_value.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                velocidade_valueStateChanged(evt);
+            }
+        });
 
         defesa_value.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         defesa_value.setModel(new javax.swing.SpinnerNumberModel(150, 0, 300, 10));
+        defesa_value.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                defesa_valueStateChanged(evt);
+            }
+        });
 
         ArmaLabel.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         ArmaLabel.setText("Arma:");
@@ -197,36 +212,12 @@ public class CriaPersonagem extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(NomeLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(NomeLabel)
-                            .addComponent(TextNome, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(defesa_value, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(crg_value, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(NomeLabel1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(NivaleLabel)
-                                .addGap(100, 100, 100))
+                            .addComponent(NivaleLabel)
                             .addComponent(TextNivel)))
                     .addComponent(ArmasSelect1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(AmbienteLabel)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(NomeLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(NomeLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addComponent(NomeLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(velocidade_value, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ataque_value, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ClassesSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -236,7 +227,33 @@ public class CriaPersonagem extends javax.swing.JDialog {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(ArmaLabel)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(ArmasSelect, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(ArmasSelect, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(AmbienteLabel)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(TextNome, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(53, 53, 53)
+                                .addComponent(crg_value, javax.swing.GroupLayout.PREFERRED_SIZE, 76, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(NomeLabel3)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(NomeLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(ataque_value, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)))
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(NomeLabel4)
+                                .addGap(31, 31, 31)
+                                .addComponent(defesa_value, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(NomeLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(velocidade_value, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -253,15 +270,17 @@ public class CriaPersonagem extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NomeLabel3)
-                    .addComponent(NomeLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ataque_value, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(crg_value, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NomeLabel2)
-                    .addComponent(velocidade_value, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(crg_value, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(NomeLabel4)
                     .addComponent(defesa_value, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(NomeLabel2)
+                        .addComponent(velocidade_value, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(NomeLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ataque_value, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ClasseLabel)
@@ -303,11 +322,29 @@ public class CriaPersonagem extends javax.swing.JDialog {
         this.setListArmasDisponiveis(this.getNivel(), this.getClasseSelected(), armas);
     }//GEN-LAST:event_ClassesSelectActionPerformed
 
+    private void ataque_valueStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ataque_valueStateChanged
+        // TODO add your handling code here:
+        int nova_defesa = 300 - (int) ataque_value.getValue();
+        defesa_value.setValue(nova_defesa);
+    }//GEN-LAST:event_ataque_valueStateChanged
+
     private void crg_valueStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_crg_valueStateChanged
         // TODO add your handling code here:
-        int aux = 1150 - (int) crg_value.getValue();
-        velocidade_value.setValue(aux);
+        int nova_veloc  = 1150 - (int) crg_value.getValue();
+        velocidade_value.setValue(nova_veloc);
     }//GEN-LAST:event_crg_valueStateChanged
+
+    private void velocidade_valueStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_velocidade_valueStateChanged
+        // TODO add your handling code here:
+        int novo_crg  = 1150 - (int) velocidade_value.getValue();
+        crg_value.setValue(novo_crg);
+    }//GEN-LAST:event_velocidade_valueStateChanged
+
+    private void defesa_valueStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_defesa_valueStateChanged
+        // TODO add your handling code here:
+        int novo_ataque  = 300 - (int) defesa_value.getValue();
+        ataque_value.setValue(novo_ataque);
+    }//GEN-LAST:event_defesa_valueStateChanged
 
     /**
      * @param args the command line arguments
