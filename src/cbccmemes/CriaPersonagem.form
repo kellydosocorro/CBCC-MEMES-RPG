@@ -31,46 +31,46 @@
                   <Component id="jButton1" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                                      <Component id="crg_value" pref="76" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="NomeLabel3" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="NomeLabel1" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="ataque_value" pref="76" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="NomeLabel2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="NomeLabel4" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="TextNome" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="NomeLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                          <Component id="NomeLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="TextNome" min="-2" pref="129" max="-2" attributes="0"/>
+                          <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="defesa_value" alignment="1" max="32767" attributes="0"/>
+                              <Component id="crg_value" alignment="1" min="-2" pref="67" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="NivaleLabel" min="-2" max="-2" attributes="0"/>
-                          <Component id="defesa_value" alignment="1" max="32767" attributes="0"/>
-                          <Component id="velocidade_value" alignment="0" pref="60" max="32767" attributes="0"/>
+                          <Component id="NomeLabel1" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="NivaleLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                          </Group>
                           <Component id="TextNivel" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="ArmasSelect1" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="AmbienteLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="NomeLabel3" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="NomeLabel4" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Component id="NomeLabel2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="velocidade_value" min="-2" pref="56" max="-2" attributes="0"/>
+                          <Component id="ataque_value" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="ClassesSelect" alignment="0" min="-2" pref="129" max="-2" attributes="0"/>
@@ -84,10 +84,6 @@
                           </Group>
                           <Component id="ArmasSelect" max="32767" attributes="0"/>
                       </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="AmbienteLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -110,14 +106,14 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="NomeLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="NomeLabel1" alignment="3" min="-2" pref="15" max="-2" attributes="0"/>
+                  <Component id="ataque_value" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="crg_value" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="NomeLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="velocidade_value" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="NomeLabel1" alignment="3" min="-2" pref="15" max="-2" attributes="0"/>
-                  <Component id="ataque_value" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="NomeLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="velocidade_value" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="NomeLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="defesa_value" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -219,9 +215,13 @@
           <Font name="Ubuntu" size="12" style="0"/>
         </Property>
         <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-          <SpinnerModel initial="1000" maximum="1150" minimum="850" numberType="java.lang.Integer" stepSize="1" type="number"/>
+          <SpinnerModel initial="1000" maximum="1150" minimum="850" numberType="java.lang.Integer" stepSize="10" type="number"/>
         </Property>
+        <Property name="requestFocusEnabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="crg_valueStateChanged"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="NomeLabel3">
       <Properties>
@@ -240,7 +240,7 @@
           <Font name="Ubuntu" size="12" style="0"/>
         </Property>
         <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-          <SpinnerModel initial="150" maximum="450" minimum="0" numberType="java.lang.Integer" stepSize="10" type="number"/>
+          <SpinnerModel initial="150" maximum="300" minimum="0" numberType="java.lang.Integer" stepSize="10" type="number"/>
         </Property>
       </Properties>
     </Component>
@@ -261,7 +261,7 @@
           <Font name="Ubuntu" size="12" style="0"/>
         </Property>
         <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-          <SpinnerModel initial="150" maximum="450" minimum="0" numberType="java.lang.Integer" stepSize="10" type="number"/>
+          <SpinnerModel initial="150" maximum="300" minimum="0" numberType="java.lang.Integer" stepSize="10" type="number"/>
         </Property>
       </Properties>
     </Component>
@@ -271,7 +271,7 @@
           <Font name="Ubuntu" size="12" style="0"/>
         </Property>
         <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-          <SpinnerModel initial="150" maximum="450" minimum="0" numberType="java.lang.Integer" stepSize="10" type="number"/>
+          <SpinnerModel initial="150" maximum="300" minimum="0" numberType="java.lang.Integer" stepSize="10" type="number"/>
         </Property>
       </Properties>
     </Component>

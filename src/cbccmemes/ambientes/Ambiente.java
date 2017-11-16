@@ -6,6 +6,7 @@ public abstract class Ambiente {
     private final String nome;
     private int nivel_minimo;
     private Ambiente anterior = null;
+    private Ambiente ambientes[];
 
     public Ambiente(String nome, int nivel_minimo) {
         this.nome = nome;
@@ -26,5 +27,13 @@ public abstract class Ambiente {
 
     public void setAnterior(Ambiente anterior) {
         this.anterior = anterior;
+    }
+
+    public Ambiente[] getAmbientes() {
+        return ambientes;
+    }
+
+    public void setAmbientes(Ambiente[] ambientes) {
+        this.ambientes = ambientes;
     }
 }
