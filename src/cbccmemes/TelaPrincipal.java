@@ -1,7 +1,6 @@
 package cbccmemes;
 
 import cbccmemes.personagens.*;
-import cbccmemes.ambientes.*;
 import cbccmemes.mochila.*;
 import javax.swing.JOptionPane;
 
@@ -87,12 +86,15 @@ public class TelaPrincipal extends javax.swing.JFrame{
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         CriaPersonagem cr = new CriaPersonagem(this, this);
+        this.setVisible(false);
         cr.setVisible(true);
+        this.setVisible(true);
         if ( !TelaPrincipal.isEmpty(getUser()) ) {
             jButton1.setText("Editar Personagem");
         }

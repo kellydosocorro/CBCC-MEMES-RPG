@@ -128,4 +128,10 @@ public abstract class Personagem{
             adversario.setVida(vida_adv);
         }
     }
+    
+    public void descricaoPerosnagem(Personagem pers){
+        if (pers != null){
+            
+        }
+    }
 }

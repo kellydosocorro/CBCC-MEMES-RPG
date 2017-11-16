@@ -104,10 +104,10 @@ public class CriaPersonagem extends javax.swing.JDialog {
         ArmaLabel = new javax.swing.JLabel();
         ArmasSelect = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
-        NivaleLabel = new javax.swing.JLabel();
         TextNivel = new javax.swing.JTextField();
         AmbienteLabel = new javax.swing.JLabel();
         ArmasSelect1 = new javax.swing.JComboBox<>();
+        NomeLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Criação de Personagem");
@@ -193,8 +193,6 @@ public class CriaPersonagem extends javax.swing.JDialog {
             }
         });
 
-        NivaleLabel.setText("Nível:");
-
         TextNivel.setEditable(false);
 
         AmbienteLabel.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
@@ -202,6 +200,10 @@ public class CriaPersonagem extends javax.swing.JDialog {
         AmbienteLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         ArmasSelect1.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+
+        NomeLabel5.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        NomeLabel5.setText("Nível:");
+        NomeLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -215,8 +217,10 @@ public class CriaPersonagem extends javax.swing.JDialog {
                         .addComponent(NomeLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(NivaleLabel)
-                            .addComponent(TextNivel)))
+                            .addComponent(TextNivel)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(NomeLabel5)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addComponent(ArmasSelect1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -262,7 +266,7 @@ public class CriaPersonagem extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NomeLabel)
-                    .addComponent(NivaleLabel))
+                    .addComponent(NomeLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TextNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -299,6 +303,7 @@ public class CriaPersonagem extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -395,12 +400,12 @@ public class CriaPersonagem extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> ArmasSelect1;
     private javax.swing.JLabel ClasseLabel;
     private javax.swing.JComboBox<String> ClassesSelect;
-    private javax.swing.JLabel NivaleLabel;
     private javax.swing.JLabel NomeLabel;
     private javax.swing.JLabel NomeLabel1;
     private javax.swing.JLabel NomeLabel2;
     private javax.swing.JLabel NomeLabel3;
     private javax.swing.JLabel NomeLabel4;
+    private javax.swing.JLabel NomeLabel5;
     private javax.swing.JTextField TextNivel;
     private javax.swing.JTextField TextNome;
     private javax.swing.JSpinner ataque_value;

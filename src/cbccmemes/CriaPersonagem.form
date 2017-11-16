@@ -8,7 +8,7 @@
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -33,8 +33,11 @@
                       <Component id="NomeLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="NivaleLabel" min="-2" max="-2" attributes="0"/>
-                          <Component id="TextNivel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="TextNivel" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="NomeLabel5" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <Component id="ArmasSelect1" alignment="0" max="32767" attributes="0"/>
@@ -98,7 +101,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="NomeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="NivaleLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="NomeLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -321,11 +324,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="NivaleLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="N&#xed;vel:"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JTextField" name="TextNivel">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
@@ -351,6 +349,17 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="NomeLabel5">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Ubuntu" size="12" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="N&#xed;vel:"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Cursor Padr&#xe3;o"/>
+        </Property>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
