@@ -1,31 +1,25 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package cbccmemes;
 
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
+import java.awt.Graphics2D;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-/**
- *
- * @author 201604940039
- */
 public class JPanelImage extends JPanel{
+   ImageIcon fundo;
 
-    
-    
-    public JPanelImage() {
-        //BufferedImage img = null;
+    public JPanelImage(String urlImage, int width, int height) {
+        this.fundo = new ImageIcon(getClass().getResource(urlImage));
+        this.setSize(width, height);
     }
     
     @Override
-    public void paint(Graphics g) {
-        super.paint(g); //To change body of generated methods, choose Tools | Templates.
-        
-//        g.drawImage(img, WIDTH, WIDTH, this)
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+	Graphics2D g2d = (Graphics2D) g.create();
+	g2d.drawImage(fundo.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
+	g2d.dispose();
     }
     
 }
