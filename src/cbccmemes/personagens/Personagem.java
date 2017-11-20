@@ -16,10 +16,9 @@ public abstract class Personagem{
     private int velocidade;
     private Item item_equipado;
     private Arma arma_equipada;
-    private Ambiente ambiente;
     private String url_imagem;
 
-    public Personagem(String nome, int nivel, int vida, int ataque, int defesa, int velocidade, Item item_batalha, Arma arma_batalha, Ambiente ambiente) {
+    public Personagem(String nome, int nivel, int vida, int ataque, int defesa, int velocidade, Item item_batalha, Arma arma_batalha) {
         this.nome = nome;
         this.nivel = nivel;
         this.vida = vida;
@@ -28,7 +27,6 @@ public abstract class Personagem{
         this.velocidade = velocidade;
         this.item_equipado = item_batalha;
         this.arma_equipada = arma_batalha;
-        this.ambiente = ambiente;
     }
     
     public int getNivel() {
@@ -61,14 +59,6 @@ public abstract class Personagem{
 
     public void setDefesa(int defesa) {
         this.defesa = defesa;
-    }
-
-    public Ambiente getAmbiente() {
-        return ambiente;
-    }
-
-    public void setAmbiente(Ambiente ambiente) {
-        this.ambiente = ambiente;
     }
 
     public Item getItem_equipado() {

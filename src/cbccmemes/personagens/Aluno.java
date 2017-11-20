@@ -17,19 +17,19 @@ public class Aluno extends Personagem {
     private int barra_experiencia;
     private String classe_aluno;
 
-    public Aluno(String nome, String classe_aluno, int nivel, int vida, int ataque, int defesa, int velocidade, Item item_batalha, Arma arma_batalha, Ambiente ambiente) {
-        super(nome, nivel, vida, ataque, defesa, velocidade, item_batalha, arma_batalha, ambiente);
+    public Aluno(String nome, String classe_aluno, int nivel, int vida, int ataque, int defesa, int velocidade, Item item_batalha, Arma arma_batalha) {
+        super(nome, nivel, vida, ataque, defesa, velocidade, item_batalha, arma_batalha);
         this.barra_experiencia = 0;
         this.classe_aluno = classe_aluno;
     }
 
     public Aluno() {
-        this("", "Biológicas", 1, 1000, 150, 150, 150, null, null, null);
+        this("", "Biológicas", 1, 1000, 150, 150, 150, null, null);
         this.barra_experiencia = 0;
     }
 
-    public void procurarItem() {
-        getAmbiente().getClass().getName();
+    public void procurarItem(Ambiente ambiente) {
+        
     }
 
     public static String[] getClasses_personagem() {

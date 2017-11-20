@@ -136,10 +136,14 @@ public class TelaPrincipal extends javax.swing.JFrame{
         if (!TelaPrincipal.isEmpty(user)){
             inicio_jogo = true;
             jButton1.setEnabled(!inicio_jogo);
-            TelaAmbientes aux = new TelaAmbientes(this, this);
+            /*TelaAmbientes aux = new TelaAmbientes(this, this);
             setVisible(false);
             aux.setVisible(true);
-            setVisible(true);
+            setVisible(true);*/
+            AmbienteDeCombate ambiente = new AmbienteDeCombate(this, true);
+            this.setVisible(false);
+            ambiente.setVisible(true);
+            this.setVisible(true);
         }else{
             jButton2ActionPerformed(evt);
         }

@@ -46,9 +46,13 @@ public class DescricaoPersonagem extends javax.swing.JDialog {
     }
     
     public void setDados(Personagem person){
+        setDados(person, true);
+    }
+    
+    public void setDados(Personagem person, boolean mochila){
         NomeField.setText(person.getNome());
         NivelField.setText(""+person.getNivel());
-        if ( person.getClass() == Aluno.class ){
+        if ( person.getClass() == Aluno.class && mochila){
             Aluno aluno = (Aluno) person;
             crg_value.setName("CRG:");
             ClasseField.setText(aluno.getClasse_aluno());
@@ -59,15 +63,9 @@ public class DescricaoPersonagem extends javax.swing.JDialog {
                 public String getElementAt(int i) { return strings[i]; }
             });
             
-            /*ArmaList.setModel(new javax.swing.AbstractListModel<String>() {
-                String[] strings = { "Arma 1", "Arma 2", "Arma 3", "Arma 4", "Arma 5" };
-                public int getSize() { return strings.length; }
-                public String getElementAt(int i) { return strings[i]; }
-            });*/
-            
-            
         }else{
             Mochila.setVisible(false);
+            this.setSize(this.getWidth(), 470);
         }        
         if ( person.getArma_equipada() != null )
             ArmaField.setText(person.getArma_equipada().getNome());
@@ -129,10 +127,11 @@ public class DescricaoPersonagem extends javax.swing.JDialog {
         velocidade_value = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Descrição do Personagem");
         setResizable(false);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cbccmemes/imagens/avatar.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\201604940039\\Desktop\\GitHub\\CBCC-MEMES-RPG\\src\\cbccmemes\\imagens\\avatar.png")); // NOI18N
         jLabel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Avatar"));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados"));
@@ -433,12 +432,13 @@ public class DescricaoPersonagem extends javax.swing.JDialog {
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Mochila, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void defesa_valueStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_defesa_valueStateChanged
