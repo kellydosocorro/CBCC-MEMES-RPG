@@ -1,4 +1,5 @@
 package cbccmemes.personagens;
+import cbccmemes.DescricaoPersonagem;
 import cbccmemes.ambientes.Ambiente;
 import cbccmemes.mochila.*;
 import java.util.Random;
@@ -13,8 +14,8 @@ public abstract class Personagem{
     private int ataque;
     private int defesa;
     private int velocidade;
-    private Item item_batalha;
-    private Arma arma_batalha;
+    private Item item_equipado;
+    private Arma arma_equipada;
     private Ambiente ambiente;
     private String url_imagem;
 
@@ -25,8 +26,8 @@ public abstract class Personagem{
         this.ataque = ataque;
         this.defesa = defesa;
         this.velocidade = velocidade;
-        this.item_batalha = item_batalha;
-        this.arma_batalha = arma_batalha;
+        this.item_equipado = item_batalha;
+        this.arma_equipada = arma_batalha;
         this.ambiente = ambiente;
     }
     
@@ -70,20 +71,20 @@ public abstract class Personagem{
         this.ambiente = ambiente;
     }
 
-    public Item getItem_batalha() {
-        return item_batalha;
+    public Item getItem_equipado() {
+        return item_equipado;
     }
 
-    public void setItem_batalha(Item item_batalha) {
-        this.item_batalha = item_batalha;
+    public void setItem_equipado(Item item_equipado) {
+        this.item_equipado = item_equipado;
     }
 
-    public Arma getArma_batalha() {
-        return arma_batalha;
+    public Arma getArma_equipada() {
+        return arma_equipada;
     }
 
-    public void setArma_batalha(Arma arma_batalha) {
-        this.arma_batalha = arma_batalha;
+    public void setArma_equipada(Arma arma_equipada) {
+        this.arma_equipada = arma_equipada;
     }
 
     public String getNome() {
@@ -114,24 +115,7 @@ public abstract class Personagem{
         this.url_imagem = url_imagem;
     }
     
-    public void atacar(Personagem adversario){
-        if (adversario.getItem_batalha() != null){
-            
-        }else{
-            int vida_adv = adversario.getVida();
-            int defesa_adv = adversario.getDefesa();
-            int ataque_user = this.getAtaque();
-            
-            if ( defesa_adv < ataque_user)
-                vida_adv -= ataque_user - defesa_adv;
-            
-            adversario.setVida(vida_adv);
-        }
-    }
+    public abstract void atacar(Personagem adversario);
     
-    public void descricaoPerosnagem(Personagem pers){
-        if (pers != null){
-            
-        }
-    }
+    public abstract void descricaoPerosnagem(java.awt.Frame parent);
 }

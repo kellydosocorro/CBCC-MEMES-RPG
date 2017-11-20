@@ -42,7 +42,7 @@ public class CriaPersonagem extends javax.swing.JDialog {
             TextNome.setText(user.getNome());
             TextNivel.setText(""+user.getNivel());
             ClassesSelect.setSelectedItem(user.getClasse_aluno());
-            ArmasSelect.setSelectedItem(user.getArma_batalha().getNome());
+            ArmasSelect.setSelectedItem(user.getArma_equipada().getNome());
         }
     }
     
@@ -310,7 +310,7 @@ public class CriaPersonagem extends javax.swing.JDialog {
         // TODO add your handling code here:
         user.setNome(TextNome.getText());
         user.setClasse_aluno(ClassesSelect.getItemAt(ClassesSelect.getSelectedIndex()));
-        user.setArma_batalha(armas_disponiveis[ArmasSelect.getSelectedIndex()]);
+        user.setArma_equipada(armas_disponiveis[ArmasSelect.getSelectedIndex()]);
         user.setArmaMochila(0, armas_disponiveis[ArmasSelect.getSelectedIndex()]);
         user.setAtaque((int) ataque_value.getValue());
         user.setDefesa((int) defesa_value.getValue());

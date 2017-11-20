@@ -1,8 +1,10 @@
 package cbccmemes.personagens;
 
+import cbccmemes.DescricaoPersonagem;
 import cbccmemes.TelaPrincipal;
 import cbccmemes.ambientes.Ambiente;
 import cbccmemes.mochila.*;
+import java.util.ArrayList;
 
 public class Aluno extends Personagem{
     private static final int NIVEL_MAXIMO = 8;
@@ -12,7 +14,6 @@ public class Aluno extends Personagem{
     private Arma armas[] = new Arma[getLIMITE_MOCHILA()];
     private int barra_experiencia;
     private String classe_aluno;
-    private Item item_equipado;
 
     public Aluno(String nome, String classe_aluno, int nivel, int vida, int ataque, int defesa, int velocidade, Item item_batalha, Arma arma_batalha, Ambiente ambiente) {
         super(nome, nivel, vida, ataque, defesa, velocidade, item_batalha, arma_batalha, ambiente);
@@ -23,14 +24,6 @@ public class Aluno extends Personagem{
     public Aluno() {
         this("", "Biológicas", 1, 1000, 150, 150, 150, null, null, null);
         this.barra_experiencia = 0;
-    }
-
-    public Item getItem_equipado() {
-        return item_equipado;
-    }
-
-    public void setItem_equipado(Item item_equipado) {
-        this.item_equipado = item_equipado;
     }
     
     public void procurarItem(){
@@ -134,5 +127,29 @@ public class Aluno extends Personagem{
             Arma vazia[] = {};
             return vazia;
         }
+    }
+
+    public ArrayList<String> getNomesArmas(){
+        try {
+            Arma[] armas_local = this.getArmas();
+            ArrayList<String> nomes = new ArrayList<>();
+            for (Arma arma : armas_local)
+                nomes.add(arma.getNome());
+            return nomes;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    
+    @Override
+    public void atacar(Personagem adversario) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void descricaoPerosnagem(java.awt.Frame parent) {
+        DescricaoPersonagem tela = new DescricaoPersonagem(parent, true);
+        tela.setDados(this);
+        tela.setVisible(true);
     }
 }

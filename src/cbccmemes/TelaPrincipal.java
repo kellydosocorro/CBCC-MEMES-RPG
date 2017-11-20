@@ -104,6 +104,8 @@ public class TelaPrincipal extends javax.swing.JFrame{
         // TODO add your handling code here:
         if (isEmpty(user)){
             JOptionPane.showMessageDialog(rootPane,"Nenhum Personagem Criado");
+        }else{
+            user.descricaoPerosnagem(this);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
