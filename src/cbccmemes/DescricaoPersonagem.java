@@ -24,6 +24,7 @@
  */
 package cbccmemes;
 
+import cbccmemes.mochila.Arma;
 import cbccmemes.personagens.Aluno;
 import cbccmemes.personagens.Personagem;
 import java.util.ArrayList;
@@ -48,16 +49,22 @@ public class DescricaoPersonagem extends javax.swing.JDialog {
         NomeField.setText(person.getNome());
         NivelField.setText(""+person.getNivel());
         if ( person.getClass() == Aluno.class ){
-            Aluno aux = (Aluno) person;
+            Aluno aluno = (Aluno) person;
             crg_value.setName("CRG:");
-            ClasseField.setText(aux.getClasse_aluno());
-            ExpField.setValue(aux.getBarra_experiencia());
-            //ItemList.setModel(new javax.swing.AbstractListModel<String>(){aux.getNomesArmas();});
+            ClasseField.setText(aluno.getClasse_aluno());
+            ExpField.setValue(aluno.getBarra_experiencia());
             ArmaList.setModel(new javax.swing.AbstractListModel<String>(){
-                String[] strings = aux.getNomesArmas();
-                public int getSize() { return strings.length; }
+                String[] strings = aluno.getNomesArmas();
+                public int getSize(){ return strings.length; }
                 public String getElementAt(int i) { return strings[i]; }
             });
+            
+            /*ArmaList.setModel(new javax.swing.AbstractListModel<String>() {
+                String[] strings = { "Arma 1", "Arma 2", "Arma 3", "Arma 4", "Arma 5" };
+                public int getSize() { return strings.length; }
+                public String getElementAt(int i) { return strings[i]; }
+            });*/
+            
             
         }else{
             Mochila.setVisible(false);
@@ -410,12 +417,11 @@ public class DescricaoPersonagem extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Mochila, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(

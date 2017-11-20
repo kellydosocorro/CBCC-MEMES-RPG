@@ -2,12 +2,34 @@ package cbccmemes;
 
 import cbccmemes.personagens.*;
 import cbccmemes.mochila.*;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class TelaPrincipal extends javax.swing.JFrame{
 
     public TelaPrincipal() {
         initComponents();
+        addArmasDeJogo();
+    }
+    public void addArmasDeJogo(){
+        //Armas Comuns
+        armas_jogo.add(new Arma("TCC", 500));
+        armas_jogo.add(new Arma("Livro", 300));
+        armas_jogo.add(new Arma("Caderno", 100));
+        armas_jogo.add(new Arma("Celular tocando", 200));
+        armas_jogo.add(new Arma("Catuaba", 400, 2));
+        //Armas de Biologia
+        armas_jogo.add(new Arma("Bisturi", 150,"Biológicas"));
+        armas_jogo.add(new Arma("Vírus", 350,"Biológicas"));
+        armas_jogo.add(new Arma("Injeção", 250,"Biológicas"));
+        //Armas de Exatas
+        armas_jogo.add(new Arma("Calculadora", 150, "Exatas"));
+        armas_jogo.add(new Arma("PC", 250, "Exatas"));
+        armas_jogo.add(new Arma("Hacker", 350, "Exatas"));
+        //Armas de Humanas
+        armas_jogo.add(new Arma("Miçangas", 150,"Humanas"));
+        armas_jogo.add(new Arma("Xerox", 250,"Humanas"));
+        armas_jogo.add(new Arma("Ocupação", 350,"Humanas"));
     }
     
     public static boolean isEmpty(Object obj){
@@ -22,8 +44,8 @@ public class TelaPrincipal extends javax.swing.JFrame{
         this.user = user;
     }
 
-    public Arma[] getArms_jogo() {
-        return arms_jogo;
+    public ArrayList<Arma> getArms_jogo() {
+        return armas_jogo;
     }
 
     @SuppressWarnings("unchecked")
@@ -159,16 +181,5 @@ public class TelaPrincipal extends javax.swing.JFrame{
     private Aluno user;
 
     //Ver possibilidade de mudança para ArrayList
-    private final Arma arms_jogo[] = {        
-        // Armas comuns
-        new Arma("TCC", 500, 7), new Arma("Livro", 300), new Arma("Caderno", 100),  new Arma("Celular tocando", 200), new Arma("Catuaba", 400, 2),
-            // Armas de Biológicas
-            new Arma("Bisturi", 150,"Biológicas"), new Arma("Vírus", 350,"Biológicas"), new Arma("Injeção", 250,"Biológicas"),            
-                // Arma de Exatas
-                new Arma("Calculadora", 150, "Humanas"), new Arma("PC", 250, "Exatas"), new Arma("Hacker", 350, "Exatas"),                
-                    // Arma de Humanas
-                    new Arma("Miçangas", 150,"Humanas"), new Arma("Xerox", 250,"Humanas"), new Arma("Ocupação", 350,"Humanas")
-    };
-    
-    
+    private ArrayList<Arma> armas_jogo = new ArrayList<>();
 }

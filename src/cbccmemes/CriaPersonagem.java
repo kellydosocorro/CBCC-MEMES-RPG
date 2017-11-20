@@ -8,6 +8,7 @@ package cbccmemes;
 import cbccmemes.mochila.Arma;
 import cbccmemes.personagens.Aluno;
 import java.awt.Frame;
+import java.util.ArrayList;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 
@@ -29,7 +30,8 @@ public class CriaPersonagem extends javax.swing.JDialog {
         this(parent, true);
         this.aux = telap;
         this.user = aux.getUser();
-        this.armas = aux.getArms_jogo();
+        this.armas = new Arma[aux.getArms_jogo().size()];
+        this.armas = aux.getArms_jogo().toArray(armas);
         this.setDadosAluno();
     }
     
@@ -105,8 +107,6 @@ public class CriaPersonagem extends javax.swing.JDialog {
         ArmasSelect = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         TextNivel = new javax.swing.JTextField();
-        AmbienteLabel = new javax.swing.JLabel();
-        ArmasSelect1 = new javax.swing.JComboBox<>();
         NomeLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -195,12 +195,6 @@ public class CriaPersonagem extends javax.swing.JDialog {
 
         TextNivel.setEditable(false);
 
-        AmbienteLabel.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
-        AmbienteLabel.setText("Ambiente Inicial:");
-        AmbienteLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        ArmasSelect1.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
-
         NomeLabel5.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         NomeLabel5.setText("Nível:");
         NomeLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -221,7 +215,6 @@ public class CriaPersonagem extends javax.swing.JDialog {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(NomeLabel5)
                                 .addGap(0, 0, Short.MAX_VALUE))))
-                    .addComponent(ArmasSelect1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ClassesSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -232,9 +225,6 @@ public class CriaPersonagem extends javax.swing.JDialog {
                                 .addComponent(ArmaLabel)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(ArmasSelect, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(AmbienteLabel)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(TextNome, javax.swing.GroupLayout.Alignment.LEADING)
@@ -293,11 +283,7 @@ public class CriaPersonagem extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ClassesSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ArmasSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(AmbienteLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ArmasSelect1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 189, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 251, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -311,15 +297,14 @@ public class CriaPersonagem extends javax.swing.JDialog {
         user.setNome(TextNome.getText());
         user.setClasse_aluno(ClassesSelect.getItemAt(ClassesSelect.getSelectedIndex()));
         user.setArma_equipada(armas_disponiveis[ArmasSelect.getSelectedIndex()]);
-        user.setArmaMochila(0, armas_disponiveis[ArmasSelect.getSelectedIndex()]);
         user.setAtaque((int) ataque_value.getValue());
         user.setDefesa((int) defesa_value.getValue());
         user.setVelocidade((int) velocidade_value.getValue());
         user.setVida((int) crg_value.getValue());
-        
         aux.setUser(user);
         
-        //System.err.println("Teste: "+velocidade);
+        for (Arma arma1: aux.getUser().getArmas())
+            System.err.println("Teste: "+arma1.getNome());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void ClassesSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClassesSelectActionPerformed
@@ -394,10 +379,8 @@ public class CriaPersonagem extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel AmbienteLabel;
     private javax.swing.JLabel ArmaLabel;
     private javax.swing.JComboBox<String> ArmasSelect;
-    private javax.swing.JComboBox<String> ArmasSelect1;
     private javax.swing.JLabel ClasseLabel;
     private javax.swing.JComboBox<String> ClassesSelect;
     private javax.swing.JLabel NomeLabel;
