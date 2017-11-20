@@ -5,6 +5,7 @@ import cbccmemes.TelaPrincipal;
 import cbccmemes.ambientes.Ambiente;
 import cbccmemes.mochila.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Aluno extends Personagem{
     private static final int NIVEL_MAXIMO = 8;
@@ -129,14 +130,15 @@ public class Aluno extends Personagem{
         }
     }
 
-    public ArrayList<String> getNomesArmas(){
+    public String[] getNomesArmas(){
         try {
             Arma[] armas_local = this.getArmas();
             ArrayList<String> nomes = new ArrayList<>();
             for (Arma arma : armas_local)
                 nomes.add(arma.getNome());
-            return nomes;
+            return (String[]) nomes.toArray();
         } catch (Exception e) {
+            System.err.println("Olá!");
             return null;
         }
     }

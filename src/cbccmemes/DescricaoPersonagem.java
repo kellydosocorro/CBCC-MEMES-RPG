@@ -52,7 +52,13 @@ public class DescricaoPersonagem extends javax.swing.JDialog {
             crg_value.setName("CRG:");
             ClasseField.setText(aux.getClasse_aluno());
             ExpField.setValue(aux.getBarra_experiencia());
-            //ItemList.setModel((ListModel<String>) new ArrayList<>(aux.getNomesArmas()));
+            //ItemList.setModel(new javax.swing.AbstractListModel<String>(){aux.getNomesArmas();});
+            ArmaList.setModel(new javax.swing.AbstractListModel<String>(){
+                String[] strings = aux.getNomesArmas();
+                public int getSize() { return strings.length; }
+                public String getElementAt(int i) { return strings[i]; }
+            });
+            
         }else{
             Mochila.setVisible(false);
         }        
