@@ -9,10 +9,9 @@ import javax.swing.JPanel;
 public class JPanelImage extends JPanel{
    ImageIcon fundo;
 
-    public JPanelImage(String urlImage, int width, int height) {
-        //this.fundo = new ImageIcon(getClass().getResource(urlImage));
-        this.fundo = new ImageIcon(urlImage);
-        this.setSize(width, height);
+    public JPanelImage(String urlImage) {
+        this.fundo = new ImageIcon(getClass().getResource(urlImage));
+        //this.fundo = new ImageIcon(urlImage);
     }
     
     @Override
