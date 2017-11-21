@@ -8,6 +8,7 @@ package cbccmemes;
 import cbccmemes.personagens.Aluno;
 import cbccmemes.personagens.Personagem;
 import java.awt.Frame;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -30,7 +31,8 @@ public class AmbienteDeCombate extends javax.swing.JDialog {
     }
     
     private void setPersonagens(Aluno user, Personagem adversario){
-        this.adversario = adversario;
+        adversario.setUrl_imagem("imagens/icones/2.jpg");
+        this.adversario = adversario;        
         this.user = user;
     }
     private void setDadosPersonagens(){
@@ -40,11 +42,16 @@ public class AmbienteDeCombate extends javax.swing.JDialog {
             NomeInimigo.setText(adversario.getNome());
             NivelInimigo.setText(NivelInimigo.getText()+adversario.getNivel());
             VidaInimigo.setMaximum(adversario.getLimite_vida());
+            try { AvatarInimigo.setIcon(new ImageIcon(getClass().getResource(adversario.getUrl_imagem()))); }
+            catch (Exception e) { AvatarInimigo.setIcon(new ImageIcon(getClass().getResource("imagens/avatar.png"))); }
+            
             //Dados User
             NomeUser.setText(user.getNome());
             NivelUser.setText(NivelUser.getText()+user.getNivel());
             ExpUser.setText(ExpUser.getText()+user.getBarra_experiencia());
             VidaUser.setMaximum(user.getLimite_vida());
+            try { AvatarlUser.setIcon(new ImageIcon(getClass().getResource(user.getUrl_imagem()))); }
+            catch (Exception e) { AvatarlUser.setIcon(new ImageIcon(getClass().getResource("imagens/avatar.png"))); }
         }
         VidaUser.setValue(user.getVida());
         VidaInimigo.setValue(adversario.getVida());
