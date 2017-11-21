@@ -10,6 +10,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -93,7 +94,7 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ataque 1"/>
+        <Property name="text" type="java.lang.String" value="Ataque F&#xed;sico"/>
         <Property name="borderPainted" type="boolean" value="false"/>
       </Properties>
       <Events>
@@ -102,12 +103,12 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ataque 2"/>
+        <Property name="text" type="java.lang.String" value="Ataque Armado"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButton3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ataque 3"/>
+        <Property name="text" type="java.lang.String" value="Ataque Especial"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButton4">
@@ -135,7 +136,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Component id="AvatarInimigo" max="32767" attributes="0"/>
-                      <Component id="jProgressBar1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="VidaInimigo" alignment="0" max="32767" attributes="0"/>
                       <Component id="NomeInimigo" alignment="0" max="32767" attributes="0"/>
                       <Component id="NivelInimigo" alignment="0" max="32767" attributes="0"/>
                   </Group>
@@ -149,7 +150,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="AvatarInimigo" min="-2" pref="150" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jProgressBar1" min="-2" max="-2" attributes="0"/>
+                  <Component id="VidaInimigo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="NomeInimigo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
@@ -160,7 +161,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JProgressBar" name="jProgressBar1">
+        <Component class="javax.swing.JProgressBar" name="VidaInimigo">
         </Component>
         <Component class="javax.swing.JLabel" name="NomeInimigo">
           <Properties>
@@ -175,7 +176,7 @@
         <Component class="javax.swing.JLabel" name="AvatarInimigo">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\201604940039\Desktop\GitHub\CBCC-MEMES-RPG\src\cbccmemes\imagens\avatar.png"/>
+              <Image iconType="3" name="/cbccmemes/imagens/avatar.png"/>
             </Property>
           </Properties>
         </Component>
@@ -197,14 +198,10 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Component id="AvatarlUser" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jProgressBar2" alignment="0" pref="150" max="32767" attributes="0"/>
-                              <Component id="NomeUser" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jLabel7" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="VidaUser" alignment="0" max="32767" attributes="0"/>
+                      <Component id="NomeUser" alignment="0" max="32767" attributes="0"/>
+                      <Component id="NivelUser" alignment="0" max="32767" attributes="0"/>
+                      <Component id="ExpUser" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -216,40 +213,40 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="AvatarlUser" min="-2" pref="150" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jProgressBar2" min="-2" max="-2" attributes="0"/>
+                  <Component id="VidaUser" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="NomeUser" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                  <Component id="NivelUser" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                  <Component id="ExpUser" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="26" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JProgressBar" name="jProgressBar2">
+        <Component class="javax.swing.JProgressBar" name="VidaUser">
         </Component>
         <Component class="javax.swing.JLabel" name="NomeUser">
           <Properties>
             <Property name="text" type="java.lang.String" value="Nome User"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel7">
+        <Component class="javax.swing.JLabel" name="NivelUser">
           <Properties>
-            <Property name="text" type="java.lang.String" value="N&#xed;vel:"/>
+            <Property name="text" type="java.lang.String" value="N&#xed;vel: "/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel8">
+        <Component class="javax.swing.JLabel" name="ExpUser">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Experi&#xea;ncia:"/>
+            <Property name="text" type="java.lang.String" value="Experi&#xea;ncia: "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="AvatarlUser">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\201604940039\Desktop\GitHub\CBCC-MEMES-RPG\src\cbccmemes\imagens\avatar.png"/>
+              <Image iconType="3" name="/cbccmemes/imagens/avatar.png"/>
             </Property>
           </Properties>
         </Component>

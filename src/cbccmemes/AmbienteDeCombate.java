@@ -5,8 +5,6 @@
  */
 package cbccmemes;
 
-import cbccmemes.mochila.Arma;
-import cbccmemes.mochila.Item;
 import cbccmemes.personagens.Aluno;
 import cbccmemes.personagens.Personagem;
 import java.awt.Frame;
@@ -23,23 +21,42 @@ public class AmbienteDeCombate extends javax.swing.JDialog {
     public AmbienteDeCombate(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.setPersonagens();
-        this.setDadosPersonagens();
     }
 
     public AmbienteDeCombate(TelaPrincipal tela) {
         this(tela, true);
-        this.user = tela.getUser();
+        this.setPersonagens(tela.getUser(), tela.getUser());
+        this.setDadosPersonagens();
     }
     
-    private void setPersonagens(){
-        Personagem aluno = new Aluno("Inimigo", "Humanas", 3, 1000, 150, 150, 150, new Item(), new Arma("Facão", 200));
-        this.adversario = aluno;
+    private void setPersonagens(Aluno user, Personagem adversario){
+        this.adversario = adversario;
+        this.user = user;
     }
     private void setDadosPersonagens(){
-        //Dados Adversário
-        NomeInimigo.setText(adversario.getNome());
-        NivelInimigo.setText(NivelInimigo.getText()+adversario.getNivel());
+        if(this.getTurno() == 0){
+            //Dados Adversário
+            adversario.setDefesa(adversario.getDefesa());
+            NomeInimigo.setText(adversario.getNome());
+            NivelInimigo.setText(NivelInimigo.getText()+adversario.getNivel());
+            VidaInimigo.setMaximum(adversario.getLimite_vida());
+            //Dados User
+            NomeUser.setText(user.getNome());
+            NivelUser.setText(NivelUser.getText()+user.getNivel());
+            ExpUser.setText(ExpUser.getText()+user.getBarra_experiencia());
+            VidaUser.setMaximum(user.getLimite_vida());
+        }
+        VidaUser.setValue(user.getVida());
+        VidaInimigo.setValue(adversario.getVida());
+    }
+    
+    public int getTurno() {
+        return turno;
+    }
+
+    public void setTurno() {
+        this.turno++;
+        this.setDadosPersonagens();
     }
     
     /**
@@ -57,15 +74,15 @@ public class AmbienteDeCombate extends javax.swing.JDialog {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jProgressBar1 = new javax.swing.JProgressBar();
+        VidaInimigo = new javax.swing.JProgressBar();
         NomeInimigo = new javax.swing.JLabel();
         NivelInimigo = new javax.swing.JLabel();
         AvatarInimigo = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jProgressBar2 = new javax.swing.JProgressBar();
+        VidaUser = new javax.swing.JProgressBar();
         NomeUser = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        NivelUser = new javax.swing.JLabel();
+        ExpUser = new javax.swing.JLabel();
         AvatarlUser = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -74,8 +91,9 @@ public class AmbienteDeCombate extends javax.swing.JDialog {
         jTextField1.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
-        jButton1.setText("Ataque 1");
+        jButton1.setText("Ataque Físico");
         jButton1.setBorderPainted(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,9 +101,9 @@ public class AmbienteDeCombate extends javax.swing.JDialog {
             }
         });
 
-        jButton2.setText("Ataque 2");
+        jButton2.setText("Ataque Armado");
 
-        jButton3.setText("Ataque 3");
+        jButton3.setText("Ataque Especial");
 
         jButton4.setText("Mochila");
         jButton4.setActionCommand("");
@@ -101,7 +119,7 @@ public class AmbienteDeCombate extends javax.swing.JDialog {
 
         NivelInimigo.setText("Nível: ");
 
-        AvatarInimigo.setIcon(new javax.swing.ImageIcon("C:\\Users\\201604940039\\Desktop\\GitHub\\CBCC-MEMES-RPG\\src\\cbccmemes\\imagens\\avatar.png")); // NOI18N
+        AvatarInimigo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cbccmemes/imagens/avatar.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -111,7 +129,7 @@ public class AmbienteDeCombate extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(AvatarInimigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jProgressBar1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(VidaInimigo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(NomeInimigo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(NivelInimigo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -122,7 +140,7 @@ public class AmbienteDeCombate extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(AvatarInimigo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(VidaInimigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(NomeInimigo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -134,11 +152,11 @@ public class AmbienteDeCombate extends javax.swing.JDialog {
 
         NomeUser.setText("Nome User");
 
-        jLabel7.setText("Nível:");
+        NivelUser.setText("Nível: ");
 
-        jLabel8.setText("Experiência:");
+        ExpUser.setText("Experiência: ");
 
-        AvatarlUser.setIcon(new javax.swing.ImageIcon("C:\\Users\\201604940039\\Desktop\\GitHub\\CBCC-MEMES-RPG\\src\\cbccmemes\\imagens\\avatar.png")); // NOI18N
+        AvatarlUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cbccmemes/imagens/avatar.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -148,12 +166,10 @@ public class AmbienteDeCombate extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(AvatarlUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jProgressBar2, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                            .addComponent(NomeUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addComponent(jLabel8)))
+                    .addComponent(VidaUser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(NomeUser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(NivelUser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ExpUser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -162,13 +178,13 @@ public class AmbienteDeCombate extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(AvatarlUser, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jProgressBar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(VidaUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(NomeUser)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel7)
+                .addComponent(NivelUser)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel8)
+                .addComponent(ExpUser)
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
@@ -238,6 +254,8 @@ public class AmbienteDeCombate extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        user.atacar(adversario);
+        this.setTurno();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -254,9 +272,11 @@ public class AmbienteDeCombate extends javax.swing.JDialog {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         DescricaoPersonagem tela = new DescricaoPersonagem(new Frame(), true);
-        System.err.println(adversario);
-        tela.setDados(adversario, false);
-        tela.setVisible(true);
+        if (adversario != null ){
+            tela.setDados(adversario, false);
+            tela.setVisible(true);
+        }else
+            throw new IllegalArgumentException("Adversário Não pode ser null");
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
@@ -305,24 +325,25 @@ public class AmbienteDeCombate extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AvatarInimigo;
     private javax.swing.JLabel AvatarlUser;
+    private javax.swing.JLabel ExpUser;
     private javax.swing.JLabel NivelInimigo;
+    private javax.swing.JLabel NivelUser;
     private javax.swing.JLabel NomeInimigo;
     private javax.swing.JLabel NomeUser;
+    private javax.swing.JProgressBar VidaInimigo;
+    private javax.swing.JProgressBar VidaUser;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JEditorPane jEditorPane1;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JProgressBar jProgressBar1;
-    private javax.swing.JProgressBar jProgressBar2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
     private Aluno user;
     private Personagem adversario;
+    private int turno = 0;
 }

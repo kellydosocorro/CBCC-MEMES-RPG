@@ -11,6 +11,7 @@ public abstract class Personagem{
     private String nome;
     private int nivel;
     private int vida;
+    private int limite_vida;
     private int ataque;
     private int defesa;
     private int velocidade;
@@ -22,6 +23,7 @@ public abstract class Personagem{
         this.nome = nome;
         this.nivel = nivel;
         this.vida = vida;
+        this.limite_vida = vida;
         this.ataque = ataque;
         this.defesa = defesa;
         this.velocidade = velocidade;
@@ -108,4 +110,12 @@ public abstract class Personagem{
     public abstract void atacar(Personagem adversario);
     
     public abstract void descricaoPerosnagem(java.awt.Frame parent);
+
+    public int getLimite_vida() {
+        return limite_vida;
+    }
+
+    public void setLimite_vida(int limite_vida) {
+        this.limite_vida = limite_vida;
+    }
 }

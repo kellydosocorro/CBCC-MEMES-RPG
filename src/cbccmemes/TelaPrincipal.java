@@ -140,7 +140,7 @@ public class TelaPrincipal extends javax.swing.JFrame{
             setVisible(false);
             aux.setVisible(true);
             setVisible(true);*/
-            AmbienteDeCombate ambiente = new AmbienteDeCombate(this, true);
+            AmbienteDeCombate ambiente = new AmbienteDeCombate(this);
             this.setVisible(false);
             ambiente.setVisible(true);
             this.setVisible(true);

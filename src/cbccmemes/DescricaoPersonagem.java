@@ -24,12 +24,9 @@
  */
 package cbccmemes;
 
-import cbccmemes.mochila.Arma;
 import cbccmemes.personagens.Aluno;
 import cbccmemes.personagens.Personagem;
-import java.util.ArrayList;
-import javax.swing.DefaultListModel;
-import javax.swing.ListModel;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -57,15 +54,25 @@ public class DescricaoPersonagem extends javax.swing.JDialog {
             crg_value.setName("CRG:");
             ClasseField.setText(aluno.getClasse_aluno());
             ExpField.setValue(aluno.getBarra_experiencia());
+            
+            //Carrega lista de Armas na mochila
             ArmaList.setModel(new javax.swing.AbstractListModel<String>(){
                 String[] strings = aluno.getNomesArmas();
                 public int getSize(){ return strings.length; }
                 public String getElementAt(int i) { return strings[i]; }
             });
+            //Carrega lista de Itens na mochila
+            ItemList.setModel(new javax.swing.AbstractListModel<String>() {
+                String[] strings = aluno.getNomesItens();
+                public int getSize(){ return strings.length; }
+                public String getElementAt(int i){ return strings[i]; }
+            });
             
         }else{
             Mochila.setVisible(false);
-            this.setSize(this.getWidth(), 470);
+            this.setSize(this.getWidth(), 420);
+            ExpLabel.setVisible(false);
+            ExpField.setVisible(false);
         }        
         if ( person.getArma_equipada() != null )
             ArmaField.setText(person.getArma_equipada().getNome());
@@ -81,6 +88,14 @@ public class DescricaoPersonagem extends javax.swing.JDialog {
         ataque_value.setValue(person.getAtaque());
         defesa_value.setValue(person.getDefesa());
         velocidade_value.setValue(person.getVelocidade());
+        
+        try {
+            AvatarPersonagem.setIcon(new ImageIcon(getClass().getResource(person.getUrl_imagem())));
+        } catch (Exception e) {
+            AvatarPersonagem.setIcon(new ImageIcon(getClass().getResource("imagens/avatar.png")));
+        }
+        //if (getClass().getResource(person.getUrl_imagem()) != null)
+            //AvatarPersonagem.setIcon(new ImageIcon(getClass().getResource(person.getUrl_imagem())));
     }
 
     /**
@@ -92,8 +107,8 @@ public class DescricaoPersonagem extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        AvatarPersonagem = new javax.swing.JLabel();
+        Dados = new javax.swing.JPanel();
         NomeLabel = new javax.swing.JLabel();
         NivelLabel = new javax.swing.JLabel();
         ClasseLabel = new javax.swing.JLabel();
@@ -116,7 +131,7 @@ public class DescricaoPersonagem extends javax.swing.JDialog {
         ArmaList = new javax.swing.JList<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jPanel5 = new javax.swing.JPanel();
+        Stats = new javax.swing.JPanel();
         defesa_value = new javax.swing.JSpinner();
         NomeLabel1 = new javax.swing.JLabel();
         NomeLabel2 = new javax.swing.JLabel();
@@ -130,11 +145,11 @@ public class DescricaoPersonagem extends javax.swing.JDialog {
         setTitle("Descrição do Personagem");
         setResizable(false);
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\201604940039\\Desktop\\GitHub\\CBCC-MEMES-RPG\\src\\cbccmemes\\imagens\\avatar.png")); // NOI18N
-        jLabel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Avatar"));
+        AvatarPersonagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        AvatarPersonagem.setBorder(javax.swing.BorderFactory.createTitledBorder("Avatar"));
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados"));
+        Dados.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados"));
+        Dados.setMinimumSize(new java.awt.Dimension(223, 217));
 
         NomeLabel.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         NomeLabel.setText("Nome:");
@@ -168,13 +183,13 @@ public class DescricaoPersonagem extends javax.swing.JDialog {
 
         ExpLabel.setText("Experiência:");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout DadosLayout = new javax.swing.GroupLayout(Dados);
+        Dados.setLayout(DadosLayout);
+        DadosLayout.setHorizontalGroup(
+            DadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DadosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(DadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(ExpLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(ClasseLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(NomeLabel, javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,40 +197,40 @@ public class DescricaoPersonagem extends javax.swing.JDialog {
                     .addComponent(ItemLabel, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ArmaLabel, javax.swing.GroupLayout.Alignment.LEADING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(DadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(NivelField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ClasseField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ArmaField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ItemField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ExpField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(NomeField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(10, 10, 10))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        DadosLayout.setVerticalGroup(
+            DadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DadosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(DadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NomeLabel)
                     .addComponent(NomeField))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(DadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NivelLabel)
                     .addComponent(NivelField))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(DadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ClasseLabel)
                     .addComponent(ClasseField))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(DadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ArmaLabel)
                     .addComponent(ArmaField))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(DadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ItemLabel)
                     .addComponent(ItemField))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(DadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ExpLabel)
                     .addComponent(ExpField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -236,7 +251,7 @@ public class DescricaoPersonagem extends javax.swing.JDialog {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -260,11 +275,11 @@ public class DescricaoPersonagem extends javax.swing.JDialog {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 269, Short.MAX_VALUE)
+            .addGap(0, 270, Short.MAX_VALUE)
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel4Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                     .addContainerGap()))
         );
         jPanel4Layout.setVerticalGroup(
@@ -309,15 +324,10 @@ public class DescricaoPersonagem extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Stats"));
+        Stats.setBorder(javax.swing.BorderFactory.createTitledBorder("Stats"));
 
         defesa_value.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         defesa_value.setEnabled(false);
-        defesa_value.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                defesa_valueStateChanged(evt);
-            }
-        });
 
         NomeLabel1.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         NomeLabel1.setText("Ataque:");
@@ -329,11 +339,6 @@ public class DescricaoPersonagem extends javax.swing.JDialog {
 
         crg_value.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         crg_value.setEnabled(false);
-        crg_value.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                crg_valueStateChanged(evt);
-            }
-        });
 
         NomeLabel3.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         NomeLabel3.setText("Vida:");
@@ -341,11 +346,6 @@ public class DescricaoPersonagem extends javax.swing.JDialog {
 
         ataque_value.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         ataque_value.setEnabled(false);
-        ataque_value.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                ataque_valueStateChanged(evt);
-            }
-        });
 
         NomeLabel4.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         NomeLabel4.setText("Defesa:");
@@ -353,59 +353,54 @@ public class DescricaoPersonagem extends javax.swing.JDialog {
 
         velocidade_value.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         velocidade_value.setEnabled(false);
-        velocidade_value.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                velocidade_valueStateChanged(evt);
-            }
-        });
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout StatsLayout = new javax.swing.GroupLayout(Stats);
+        Stats.setLayout(StatsLayout);
+        StatsLayout.setHorizontalGroup(
+            StatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(StatsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
+                .addGroup(StatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, StatsLayout.createSequentialGroup()
                         .addGap(53, 53, 53)
                         .addComponent(crg_value))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, StatsLayout.createSequentialGroup()
                         .addComponent(NomeLabel3)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, StatsLayout.createSequentialGroup()
                         .addComponent(NomeLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(ataque_value)))
                 .addGap(96, 96, 96)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(StatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(StatsLayout.createSequentialGroup()
                         .addComponent(NomeLabel4)
                         .addGap(31, 31, 31)
                         .addComponent(defesa_value))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addGroup(StatsLayout.createSequentialGroup()
                         .addComponent(NomeLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(velocidade_value)))
                 .addContainerGap())
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        StatsLayout.setVerticalGroup(
+            StatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(StatsLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(StatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NomeLabel3)
                     .addComponent(crg_value, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(NomeLabel4)
                     .addComponent(defesa_value, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(StatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(StatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(NomeLabel2)
                         .addComponent(velocidade_value, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(StatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(NomeLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(ataque_value, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -414,56 +409,34 @@ public class DescricaoPersonagem extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Mochila, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Stats, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(Mochila, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Dados, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(AvatarPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Dados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AvatarPersonagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Stats, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Mochila, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void defesa_valueStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_defesa_valueStateChanged
-        // TODO add your handling code here:
-        int novo_ataque  = 300 - (int) defesa_value.getValue();
-        ataque_value.setValue(novo_ataque);
-    }//GEN-LAST:event_defesa_valueStateChanged
-
-    private void crg_valueStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_crg_valueStateChanged
-        // TODO add your handling code here:
-        int nova_veloc  = 1150 - (int) crg_value.getValue();
-        velocidade_value.setValue(nova_veloc);
-    }//GEN-LAST:event_crg_valueStateChanged
-
-    private void ataque_valueStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ataque_valueStateChanged
-        // TODO add your handling code here:
-        int nova_defesa = 300 - (int) ataque_value.getValue();
-        defesa_value.setValue(nova_defesa);
-    }//GEN-LAST:event_ataque_valueStateChanged
-
-    private void velocidade_valueStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_velocidade_valueStateChanged
-        // TODO add your handling code here:
-        int novo_crg  = 1150 - (int) velocidade_value.getValue();
-        crg_value.setValue(novo_crg);
-    }//GEN-LAST:event_velocidade_valueStateChanged
 
     /**
      * @param args the command line arguments
@@ -511,8 +484,10 @@ public class DescricaoPersonagem extends javax.swing.JDialog {
     private javax.swing.JLabel ArmaField;
     private javax.swing.JLabel ArmaLabel;
     private javax.swing.JList<String> ArmaList;
+    private javax.swing.JLabel AvatarPersonagem;
     private javax.swing.JLabel ClasseField;
     private javax.swing.JLabel ClasseLabel;
+    private javax.swing.JPanel Dados;
     private javax.swing.JProgressBar ExpField;
     private javax.swing.JLabel ExpLabel;
     private javax.swing.JLabel ItemField;
@@ -527,16 +502,14 @@ public class DescricaoPersonagem extends javax.swing.JDialog {
     private javax.swing.JLabel NomeLabel2;
     private javax.swing.JLabel NomeLabel3;
     private javax.swing.JLabel NomeLabel4;
+    private javax.swing.JPanel Stats;
     private javax.swing.JSpinner ataque_value;
     private javax.swing.JSpinner crg_value;
     private javax.swing.JSpinner defesa_value;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;

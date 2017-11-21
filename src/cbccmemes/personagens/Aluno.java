@@ -5,7 +5,6 @@ import cbccmemes.TelaPrincipal;
 import cbccmemes.ambientes.Ambiente;
 import cbccmemes.mochila.*;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Aluno extends Personagem {
 
@@ -136,7 +135,19 @@ public class Aluno extends Personagem {
             }
             return str;
         } catch (Exception e) {
-            System.err.println("Olá!");
+            return null;
+        }
+    }
+    
+    public String[] getNomesItens() {
+        try {
+            String str[] = new String[this.getArmas().size()];
+            int i = 0 ;
+            for ( Item aux: this.getItens()){
+                str[i] = aux.getNome();
+            }
+            return str;
+        } catch (Exception e) {
             return null;
         }
     }
@@ -159,7 +170,18 @@ public class Aluno extends Personagem {
 
     @Override
     public void atacar(Personagem adversario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (adversario.getItem_equipado() != null){
+            
+        }else{
+            int vida_adv = adversario.getVida();
+            int defesa_adv = adversario.getDefesa();
+            int ataque_user = this.getAtaque();
+            
+            if ( defesa_adv < ataque_user)
+                vida_adv -= ataque_user - defesa_adv;
+            
+            adversario.setVida(vida_adv);
+        }
     }
 
     @Override
