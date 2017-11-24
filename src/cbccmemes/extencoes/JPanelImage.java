@@ -1,5 +1,5 @@
 
-package cbccmemes;
+package cbccmemes.extencoes;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -11,7 +11,6 @@ public class JPanelImage extends JPanel{
 
     public JPanelImage(String urlImage) {
         this.fundo = new ImageIcon(getClass().getResource(urlImage));
-        //this.fundo = new ImageIcon(urlImage);
     }
     
     @Override
