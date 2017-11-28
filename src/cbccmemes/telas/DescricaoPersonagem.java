@@ -92,7 +92,7 @@ public class DescricaoPersonagem extends javax.swing.JDialog {
         try {
             AvatarPersonagem.setIcon(new ImageIcon(getClass().getResource(person.getUrl_imagem())));
         } catch (Exception e) {
-            AvatarPersonagem.setIcon(new ImageIcon(getClass().getResource("imagens/avatar.png")));
+            AvatarPersonagem.setIcon(new ImageIcon(getClass().getResource("/cbccmemes/imagens/avatar.png")));
         }
         //if (getClass().getResource(person.getUrl_imagem()) != null)
             //AvatarPersonagem.setIcon(new ImageIcon(getClass().getResource(person.getUrl_imagem())));

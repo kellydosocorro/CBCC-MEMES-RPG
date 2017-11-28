@@ -6,23 +6,23 @@ import java.util.Random;
 public class Item {
     private int nivel_minimo;
     private String nome;
-    private String poder_ataque;
+    private int poder_ataque;
     String classe;
     
     // Item de nível minínimo
-    public Item(String nome, String poder_ataque, int nivel_minimo) {
+    public Item(String nome, int poder_ataque, int nivel_minimo) {
         this.nome = nome;
         this.poder_ataque = poder_ataque;
         this.nivel_minimo = nivel_minimo;
     }
     // Item especial de classes
-    public Item(String nome, String poder_ataque, String classe) {
+    public Item(String nome, int poder_ataque, String classe) {
         this.nome = nome;
         this.poder_ataque = poder_ataque;
         this.classe = classe;
     }
     
-    public Item(String nome, String poder_ataque){
+    public Item(String nome, int poder_ataque){
         this.nome = nome;
         this.poder_ataque = poder_ataque;
                 
@@ -46,7 +46,7 @@ public class Item {
         this.nome = nome;
     }
 
-    public void setPoder_ataque(String poder_ataque) {
+    public void setPoder_ataque(int poder_ataque) {
         this.poder_ataque = poder_ataque;
     }
 
@@ -58,7 +58,7 @@ public class Item {
         return nome;
     }
 
-    public String getPoder_ataque() {
+    public int getPoder_ataque() {
         return poder_ataque;
     }
 }
