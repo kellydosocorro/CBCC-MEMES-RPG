@@ -3,11 +3,28 @@ package cbccmemes.mochila;
 import cbccmemes.personagens.Personagem;
 import java.util.Random;
 
-public class Item {
+public abstract class Item {
     private int nivel_minimo;
     private String nome;
     private int poder_ataque;
+    private int poder_defesa;
     String classe;
+    public double dinheiro;
+    private int vida;
+    
+    // Item para vida
+    public Item(int vida, String nome, int nivel_minimo) {
+        this.vida = vida;
+        this.nome = nome;
+        this.nivel_minimo = nivel_minimo;
+    }
+    
+    // Item para defesa
+    public Item(int vida, int poder_defesa, String nome) {
+        this.vida = vida;
+        this.nome = nome;
+        this.nivel_minimo = poder_defesa;
+    }
     
     // Item de nível minínimo
     public Item(String nome, int poder_ataque, int nivel_minimo) {
