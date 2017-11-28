@@ -1,6 +1,6 @@
 package cbccmemes.mochila;
 
-import cbccmemes.TelaPrincipal;
+import cbccmemes.telas.TelaPrincipal;
 
 public class Arma {
     private final String nome;

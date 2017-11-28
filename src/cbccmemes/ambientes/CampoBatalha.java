@@ -1,6 +1,6 @@
 package cbccmemes.ambientes;
 
-import cbccmemes.TelaPrincipal;
+import cbccmemes.telas.TelaPrincipal;
 import cbccmemes.personagens.Aluno;
 import cbccmemes.personagens.Personagem;
 import java.util.Random;

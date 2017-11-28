@@ -1,4 +1,4 @@
-package cbccmemes;
+package cbccmemes.telas;
 
 import cbccmemes.personagens.*;
 import cbccmemes.mochila.*;
@@ -58,7 +58,6 @@ public class TelaPrincipal extends javax.swing.JFrame{
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CBCCMEMES");
-        setMaximumSize(new java.awt.Dimension(300, 400));
         setName("TelaPrincipal"); // NOI18N
         setResizable(false);
 

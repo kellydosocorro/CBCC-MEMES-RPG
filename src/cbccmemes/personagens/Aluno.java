@@ -1,7 +1,7 @@
 package cbccmemes.personagens;
 
-import cbccmemes.DescricaoPersonagem;
-import cbccmemes.TelaPrincipal;
+import cbccmemes.telas.DescricaoPersonagem;
+import cbccmemes.telas.TelaPrincipal;
 import cbccmemes.ambientes.Ambiente;
 import cbccmemes.mochila.*;
 import java.util.ArrayList;

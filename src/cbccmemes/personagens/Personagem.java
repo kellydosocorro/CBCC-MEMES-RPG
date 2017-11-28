@@ -1,5 +1,5 @@
 package cbccmemes.personagens;
-import cbccmemes.DescricaoPersonagem;
+import cbccmemes.telas.DescricaoPersonagem;
 import cbccmemes.ambientes.Ambiente;
 import cbccmemes.mochila.*;
 import java.util.Random;
