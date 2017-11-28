@@ -7,6 +7,26 @@ public class Item {
     private int nivel_minimo;
     private String nome;
     private String poder_ataque;
+    String classe;
+    
+    // Item de nível minínimo
+    public Item(String nome, String poder_ataque, int nivel_minimo) {
+        this.nome = nome;
+        this.poder_ataque = poder_ataque;
+        this.nivel_minimo = nivel_minimo;
+    }
+    // Item especial de classes
+    public Item(String nome, String poder_ataque, String classe) {
+        this.nome = nome;
+        this.poder_ataque = poder_ataque;
+        this.classe = classe;
+    }
+    
+    public Item(String nome, String poder_ataque){
+        this.nome = nome;
+        this.poder_ataque = poder_ataque;
+                
+    }
     
     public static Item getItemAleatorio(Personagem personagem, Item itens[]){
         int quantidade_itens = itens.length;

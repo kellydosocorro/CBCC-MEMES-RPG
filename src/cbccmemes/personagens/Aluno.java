@@ -11,6 +11,7 @@ public class Aluno extends Personagem {
     private static final int NIVEL_MAXIMO = 8;
     private static final String classes_personagem[] = {"Biológicas", "Exatas", "Humanas"};
 
+    private double dinheiro;
     private ArrayList<Item> itens = new ArrayList<>(getLIMITE_MOCHILA());
     private ArrayList<Arma> armas = new ArrayList<>(getLIMITE_MOCHILA());
     private int barra_experiencia;

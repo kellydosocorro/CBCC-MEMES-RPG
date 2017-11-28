@@ -4,8 +4,8 @@ import cbccmemes.mochila.Item;
 
 public class ColetaItens extends Ambiente{
     private Item item;
-    //Definir array de Itens abaixo
-    private final Item itens[] = {new Item(), new Item()};
+    //Definir array de Itens abaixo (estava dando problema então, comentei)
+    //private final Item itens[] = {new Item(), new Item()};
 
     public ColetaItens(Item item, String nome, int nivel_minimo, String url_image) {
         super(nome, nivel_minimo, url_image);
@@ -21,7 +21,7 @@ public class ColetaItens extends Ambiente{
     }
     
     public Item procuraItem(Personagem person){
-        this.setItem(Item.getItemAleatorio(person, itens));
+        //this.setItem(Item.getItemAleatorio(person, itens));
         
         return this.getItem();
     }
