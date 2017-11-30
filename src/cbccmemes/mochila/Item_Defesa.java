@@ -10,8 +10,8 @@ package cbccmemes.mochila;
  */
 public class Item_Defesa extends Item {
     
-    public Item_Defesa(int vida, int poder_defesa, String nome) {
-        super(vida, poder_defesa, nome);
+    public Item_Defesa(String nome, int poder_defesa) {
+        super(nome, poder_defesa);
     }
    
 }

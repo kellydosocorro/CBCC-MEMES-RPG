@@ -19,6 +19,13 @@ public abstract class Item {
         this.nivel_minimo = nivel_minimo;
     }
     
+    public Item(String nome, String classe, int poder_ataque, int nivel_minimo) {
+        this.nome = nome;
+        this.classe = classe;
+        this.poder_ataque = poder_ataque;
+        this.nivel_minimo = nivel_minimo;
+    }
+    
     // Item para defesa
     public Item(int vida, int poder_defesa, String nome) {
         this.vida = vida;
