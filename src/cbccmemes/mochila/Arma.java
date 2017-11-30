@@ -1,6 +1,5 @@
 package cbccmemes.mochila;
 
-import cbccmemes.telas.TelaPrincipal;
 
 public class Arma {
     private final String nome;
@@ -13,6 +12,10 @@ public class Arma {
         this.poder_ataque = poder_ataque;
         this.classe_associada = classe_associada;
         this.nivel_minimo = nivel_minimo;
+    }
+    
+    public Arma(){
+        this(null, 0);
     }
     
     public Arma(String nome, int poder_ataque, int nivel_minimo) {
@@ -47,12 +50,12 @@ public class Arma {
         return nivel_minimo;
     }
     
-    public static boolean armaPertenceClasse(Arma arm, String classe){
-        String aux = arm.getClasse_associada();
+    public boolean armaPertenceClasse(String classe){
+        String aux = this.getClasse_associada();
         
-        if ( TelaPrincipal.isEmpty(aux) )
+        if ( aux == null )
             return true;
         
-        return (!TelaPrincipal.isEmpty(aux) && !TelaPrincipal.isEmpty(classe) && classe.equals(aux));
+        return (aux != null && classe != null && classe.equals(aux));
     }
 }

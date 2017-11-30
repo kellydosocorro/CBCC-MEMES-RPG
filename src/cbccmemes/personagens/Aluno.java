@@ -60,7 +60,7 @@ public class Aluno extends Personagem {
     }
 
     public static Arma[] getArmasDisponiveis(String classe, Arma armas[]) {
-        if (TelaPrincipal.isEmpty(armas)) {
+        if ( armas == null ) {
             Arma vazia[] = {};
             return vazia;
         } else {
@@ -68,7 +68,7 @@ public class Aluno extends Personagem {
 
             int cont_aux = 0;
             for (int i = 0; i < armas.length; i++) {
-                if (Arma.armaPertenceClasse(armas[i], classe)) {
+                if (armas[i].armaPertenceClasse(classe)) {
                     indices[cont_aux] = i;
                     cont_aux++;
                 }
@@ -82,7 +82,7 @@ public class Aluno extends Personagem {
     }
 
     public static Arma[] getArmasDisponiveis(int nivel, Arma armas[]) {
-        if (!TelaPrincipal.isEmpty(armas) && nivel > 0 && nivel <= NIVEL_MAXIMO) {
+        if ( armas != null && nivel > 0 && nivel <= NIVEL_MAXIMO) {
             //Vetor para armazenar indices das armas que serão compatíveis
             int indices[] = new int[armas.length];
 
@@ -105,13 +105,13 @@ public class Aluno extends Personagem {
     }
 
     public static Arma[] getArmasDisponiveis(int nivel, String classe, Arma armas[]) {
-        if (!TelaPrincipal.isEmpty(armas) && nivel > 0 && nivel <= NIVEL_MAXIMO) {
+        if (armas != null && nivel > 0 && nivel <= NIVEL_MAXIMO) {
             //Vetor para armazenar indices das armas que serão compatíveis
             int indices[] = new int[armas.length];
 
             int cont_aux = 0;
             for (int i = 0; i < armas.length; i++) {
-                if (nivel >= armas[i].getNivel_minimo() && Arma.armaPertenceClasse(armas[i], classe)) {
+                if (nivel >= armas[i].getNivel_minimo() && armas[i].armaPertenceClasse(classe)) {
                     indices[cont_aux] = i;
                     cont_aux++;
                 }

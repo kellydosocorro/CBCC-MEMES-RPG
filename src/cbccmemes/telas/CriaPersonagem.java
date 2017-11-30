@@ -36,7 +36,7 @@ public class CriaPersonagem extends javax.swing.JDialog {
     }
     
     private void setDadosAluno(){
-        if ( TelaPrincipal.isEmpty(user) ){
+        if ( user == null ){
             user = new Aluno();
             TextNivel.setText(""+user.getNivel());
             this.setListArmasDisponiveis(Integer.parseInt(TextNivel.getText()), getClasseSelected(), armas);

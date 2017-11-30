@@ -6,7 +6,7 @@
 package cbccmemes.telas;
 
 import cbccmemes.ambientes.Ambiente;
-import cbccmemes.ambientes.CompraArmas;
+import cbccmemes.ambientes.Mercado;
 import java.awt.Frame;
 
 /**

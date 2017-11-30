@@ -46,7 +46,7 @@ public class TelaPrincipal extends javax.swing.JFrame{
         this.armas_jogo = armas_jogo;
     }    
     
-    public static boolean isEmpty(Object obj){
+    private boolean isEmpty(Object obj){
         return (obj==null);
     }
     
@@ -130,7 +130,7 @@ public class TelaPrincipal extends javax.swing.JFrame{
         this.setVisible(false);
         cr.setVisible(true);
         this.setVisible(true);
-        if ( !TelaPrincipal.isEmpty(getUser()) ) {
+        if ( !isEmpty(getUser()) ) {
             jButton1.setText("Editar Personagem");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -146,7 +146,7 @@ public class TelaPrincipal extends javax.swing.JFrame{
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        if (!TelaPrincipal.isEmpty(user)){
+        if (!isEmpty(user)){
             inicio_jogo = true;
             jButton1.setEnabled(!inicio_jogo);
             /*TelaAmbientes aux = new TelaAmbientes(this, this);
