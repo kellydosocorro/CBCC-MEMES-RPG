@@ -6,30 +6,9 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class TelaPrincipal extends javax.swing.JFrame{
-
-    public TelaPrincipal() {
+    
+    private TelaPrincipal() {
         initComponents();
-        addArmasDeJogo();
-    }
-    public void addArmasDeJogo(){
-        //Armas Comuns
-        armas_jogo.add(new Arma("TCC", 500));
-        armas_jogo.add(new Arma("Livro", 300));
-        armas_jogo.add(new Arma("Caderno", 100));
-        armas_jogo.add(new Arma("Celular tocando", 200));
-        armas_jogo.add(new Arma("Catuaba", 400, 2));
-        //Armas de Biologia
-        armas_jogo.add(new Arma("Bisturi", 150,"Biológicas"));
-        armas_jogo.add(new Arma("Vírus", 350,"Biológicas"));
-        armas_jogo.add(new Arma("Injeção", 250,"Biológicas"));
-        //Armas de Exatas
-        armas_jogo.add(new Arma("Calculadora", 150, "Exatas"));
-        armas_jogo.add(new Arma("PC", 250, "Exatas"));
-        armas_jogo.add(new Arma("Hacker", 350, "Exatas"));
-        //Armas de Humanas
-        armas_jogo.add(new Arma("Miçangas", 150,"Humanas"));
-        armas_jogo.add(new Arma("Xerox", 250,"Humanas"));
-        armas_jogo.add(new Arma("Ocupação", 350,"Humanas"));
     }
     public void addItensJogo(){
         
@@ -60,6 +39,12 @@ public class TelaPrincipal extends javax.swing.JFrame{
         
     }
     
+    
+    public TelaPrincipal(ArrayList<Item> itens_jogo, ArrayList<Arma> armas_jogo) {
+        this();
+        this.itens_jogo = itens_jogo;
+        this.armas_jogo = armas_jogo;
+    }    
     
     public static boolean isEmpty(Object obj){
         return (obj==null);
@@ -197,11 +182,11 @@ public class TelaPrincipal extends javax.swing.JFrame{
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        /*java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new TelaPrincipal().setVisible(true);
             }
-        });
+        });*/
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
