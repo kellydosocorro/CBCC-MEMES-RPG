@@ -19,18 +19,20 @@ public abstract class Item {
         this.nivel_minimo = nivel_minimo;
     }
     
-    public Item(String nome, String classe, int poder_ataque, int nivel_minimo) {
+    public Item(String nome, String classe, int poder_ataque, int nivel_minimo, double dinheiro) {
         this.nome = nome;
         this.classe = classe;
         this.poder_ataque = poder_ataque;
         this.nivel_minimo = nivel_minimo;
+        this.dinheiro = dinheiro;
     }
     
     // Item para defesa
-    public Item(int vida, int poder_defesa, String nome) {
+    public Item(int vida, int poder_defesa, double dinheiro, String nome) {
         this.vida = vida;
         this.nome = nome;
         this.nivel_minimo = poder_defesa;
+        this.dinheiro = dinheiro;
     }
     
     // Item de nível minínimo
@@ -48,8 +50,7 @@ public abstract class Item {
     
     public Item(String nome, int poder_ataque){
         this.nome = nome;
-        this.poder_ataque = poder_ataque;
-                
+        this.poder_ataque = poder_ataque;        
     }
     
     public static Item getItemAleatorio(Personagem personagem, Item itens[]){

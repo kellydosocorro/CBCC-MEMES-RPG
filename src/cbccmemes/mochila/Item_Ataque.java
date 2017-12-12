@@ -11,8 +11,8 @@ package cbccmemes.mochila;
  */
 public class Item_Ataque extends Item {
 
-    public Item_Ataque(String nome, String classe, int poder_ataque, int nivel_minimo) {
-        super(nome, classe, poder_ataque, nivel_minimo);
+    public Item_Ataque(String nome, String classe, int poder_ataque, int nivel_minimo, double dinheiro) {
+        super(nome, classe, poder_ataque, nivel_minimo, dinheiro);
     }
     
     public Item_Ataque(String nome, int poder_ataque) {

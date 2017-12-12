@@ -11,20 +11,21 @@ public class Aluno extends Personagem {
     private static final int NIVEL_MAXIMO = 8;
     private static final String classes_personagem[] = {"Biológicas", "Exatas", "Humanas"};
 
-    private double dinheiro;
+    public double dinheiro;
     private ArrayList<Item> itens = new ArrayList<>(getLIMITE_MOCHILA());
     private ArrayList<Arma> armas = new ArrayList<>(getLIMITE_MOCHILA());
     private int barra_experiencia;
     private String classe_aluno;
 
-    public Aluno(String nome, String classe_aluno, int nivel, int vida, int ataque, int defesa, int velocidade, Item item_batalha, Arma arma_batalha) {
-        super(nome, nivel, vida, ataque, defesa, velocidade, item_batalha, arma_batalha);
+    public Aluno(String nome, String classe_aluno, int nivel, int vida, int ataque, int defesa, int velocidade, Item item_batalha, Arma arma_batalha, double dinheiro) {
+        super(nome, nivel, vida, ataque, defesa, velocidade, item_batalha, arma_batalha, dinheiro);
         this.barra_experiencia = 0;
         this.classe_aluno = classe_aluno;
+        this.dinheiro = 10000;
     }
 
     public Aluno() {
-        this("", "Biológicas", 1, 1000, 150, 150, 150, null, null);
+        this("", "Biológicas", 1, 1000, 150, 150, 150, null, null, 10000);
         this.barra_experiencia = 0;
     }
 
@@ -144,9 +145,9 @@ public class Aluno extends Personagem {
         try {
             String str[] = new String[this.getArmas().size()];
             int i = 0 ;
-            for ( Item aux: this.getItens()){
+            this.getItens().forEach((aux) -> {
                 str[i] = aux.getNome();
-            }
+            });
             return str;
         } catch (Exception e) {
             return null;

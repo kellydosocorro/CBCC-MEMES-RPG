@@ -11,7 +11,7 @@ import java.awt.Frame;
 import java.util.ArrayList;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
-
+  
 /**
  *
  * @author hundson
@@ -39,6 +39,7 @@ public class CriaPersonagem extends javax.swing.JDialog {
         if ( user == null ){
             user = new Aluno();
             TextNivel.setText(""+user.getNivel());
+            jTextField1.setText(""+user.setDinheiro(1000)); // Adicionado em 12.12.2017
             this.setListArmasDisponiveis(Integer.parseInt(TextNivel.getText()), getClasseSelected(), armas);
         }else{
             TextNome.setText(user.getNome());
@@ -108,6 +109,9 @@ public class CriaPersonagem extends javax.swing.JDialog {
         jButton1 = new javax.swing.JButton();
         TextNivel = new javax.swing.JTextField();
         NomeLabel5 = new javax.swing.JLabel();
+        ClasseLabel1 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Criação de Personagem");
@@ -194,10 +198,26 @@ public class CriaPersonagem extends javax.swing.JDialog {
         });
 
         TextNivel.setEditable(false);
+        TextNivel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextNivelActionPerformed(evt);
+            }
+        });
 
         NomeLabel5.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         NomeLabel5.setText("Nível:");
         NomeLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        ClasseLabel1.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        ClasseLabel1.setText("Dinheiro:");
+        ClasseLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        jTextField1.setEditable(false);
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -207,14 +227,6 @@ public class CriaPersonagem extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(NomeLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TextNivel)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(NomeLabel5)
-                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ClassesSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -226,19 +238,28 @@ public class CriaPersonagem extends javax.swing.JDialog {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(ArmasSelect, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(TextNome, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(53, 53, 53)
-                                .addComponent(crg_value, javax.swing.GroupLayout.PREFERRED_SIZE, 76, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(NomeLabel3)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(NomeLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(ataque_value, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)))
-                        .addGap(26, 26, 26)
+                        .addGap(113, 113, 113)
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(TextNome, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGap(53, 53, 53)
+                                        .addComponent(crg_value, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(NomeLabel3)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(NomeLabel1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(ataque_value)))
+                                .addGap(26, 26, 26))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(NomeLabel)
+                                .addGap(118, 118, 118)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(NomeLabel4)
@@ -247,7 +268,15 @@ public class CriaPersonagem extends javax.swing.JDialog {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(NomeLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(velocidade_value, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)))))
+                                .addComponent(velocidade_value, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ClasseLabel1)
+                                    .addComponent(NomeLabel5))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TextNivel)
+                                    .addComponent(jTextField1))))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -256,11 +285,13 @@ public class CriaPersonagem extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NomeLabel)
-                    .addComponent(NomeLabel5))
+                    .addComponent(NomeLabel5)
+                    .addComponent(TextNivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TextNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TextNivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ClasseLabel1)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NomeLabel3)
@@ -276,14 +307,16 @@ public class CriaPersonagem extends javax.swing.JDialog {
                         .addComponent(NomeLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(ataque_value, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ClasseLabel)
-                    .addComponent(ArmaLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(ArmaLabel, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ClassesSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ArmasSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 251, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 224, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -301,6 +334,7 @@ public class CriaPersonagem extends javax.swing.JDialog {
         user.setDefesa((int) defesa_value.getValue());
         user.setVelocidade((int) velocidade_value.getValue());
         user.setVida((int) crg_value.getValue());
+        double Dinheiro = user.setDinheiro(1000);
         aux.setUser(user);
         
         for (Arma arma1: aux.getUser().getArmas())
@@ -335,6 +369,14 @@ public class CriaPersonagem extends javax.swing.JDialog {
         int novo_ataque  = 300 - (int) defesa_value.getValue();
         ataque_value.setValue(novo_ataque);
     }//GEN-LAST:event_defesa_valueStateChanged
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        Double.parseDouble(jTextField1.getText()); // Adicionado em 12.12.2017
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void TextNivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextNivelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextNivelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -382,6 +424,7 @@ public class CriaPersonagem extends javax.swing.JDialog {
     private javax.swing.JLabel ArmaLabel;
     private javax.swing.JComboBox<String> ArmasSelect;
     private javax.swing.JLabel ClasseLabel;
+    private javax.swing.JLabel ClasseLabel1;
     private javax.swing.JComboBox<String> ClassesSelect;
     private javax.swing.JLabel NomeLabel;
     private javax.swing.JLabel NomeLabel1;
@@ -395,6 +438,8 @@ public class CriaPersonagem extends javax.swing.JDialog {
     private javax.swing.JSpinner crg_value;
     private javax.swing.JSpinner defesa_value;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JSpinner velocidade_value;
     // End of variables declaration//GEN-END:variables
     private Aluno user;

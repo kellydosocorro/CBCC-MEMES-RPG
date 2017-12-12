@@ -18,17 +18,20 @@ public class TelaPrincipal extends javax.swing.JFrame{
         itens_jogo.add(new Item_Ataque("Caderno", 150));
         itens_jogo.add(new Item_Ataque("Caneta", 250));
         
-                                    // Nome, Classe, Poder, Nível
-        itens_jogo.add(new Item_Ataque("Régua", "Exatas", 400, 0));
-        itens_jogo.add(new Item_Ataque("Apostila", "Humanas", 400 , 0));
-        itens_jogo.add(new Item_Ataque("Constituição", "Jurídicas", 400 , 0));
-        itens_jogo.add(new Item_Ataque("Seringa", "Biológicas", 400 , 0));
+                                    // Nome, Classe, Poder, Nível, Dinheiro necessario
+        itens_jogo.add(new Item_Ataque("Régua", "Exatas", 400, 0, 0));
+        itens_jogo.add(new Item_Ataque("Apostila", "Humanas", 400 , 0, 0));
+        itens_jogo.add(new Item_Ataque("Constituição", "Jurídicas", 400 , 0, 0));
+        itens_jogo.add(new Item_Ataque("Seringa", "Biológicas", 400 , 0, 0));
         
         //Itens comuns de defesa
                                     // Nome, Poder de ação
         itens_jogo.add(new Item_Defesa("Livro", 100));
         itens_jogo.add(new Item_Defesa("Exercícios feitos", 150));
         itens_jogo.add(new Item_Defesa("Artigo", 350));
+        
+                            // Vida, Poder de ação, Dinheiro, Nome
+        // itens_jogo.add(new Item_Defesa(0, 100, 0, "Livro"));
         
         //Itens de vida
                                     // Valor, Nome, Nível
