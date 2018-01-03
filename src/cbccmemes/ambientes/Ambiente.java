@@ -1,39 +1,60 @@
 package cbccmemes.ambientes;
 
-import java.util.ArrayList;
-
 public abstract class Ambiente {
-    private final String nome;
-    private final int nivel_minimo;
-    private Ambiente anterior = null;
-    private ArrayList<Ambiente> ambientes_internos;
+    private String nome;
+    private String descricao;
     private String url_image;
-
-    public Ambiente(String nome, int nivel_minimo, String url_image) {
-        this.nome = nome;
-        this.nivel_minimo = nivel_minimo;
-        this.url_image = url_image;
-    }
+    private int nivel_minimo;
+    private boolean acessivel;
     
-    public Ambiente(String nome, int nivel_minimo, String url_image, ArrayList<Ambiente> ambientes){
-        this(nome, nivel_minimo, url_image);
-        this.ambientes_internos = ambientes;
+    /**
+     * Adiciona destino na árvore de caminhos possíveis.
+     * Requer um destino do tipo Ambiente para ser adicionado.
+     * @param destino 
+     */
+    public void addDestino(Ambiente destino){
+        throw new UnsupportedOperationException();
+    }
+    /**
+     * Remove destinos.
+     * Usa como parâmetro destino a ser removido.
+     * @param destino
+     */
+    public void removeDestino(Ambiente destino){
+        throw new UnsupportedOperationException();
+    }
+    /**
+     * Método para recuperar nó filho de acordo com o nome passado.
+     * Requer um nome de Ambiente de Destino Válido.
+     * @param nome
+     * @return Ambiente de Destino
+     */
+    public Ambiente getDestino(String nome){
+        throw new UnsupportedOperationException();
+    }
+    /**
+     * Printa dados do Ambiente.
+     */
+    public void printDados(){
+        System.out.println("Nome:"+this.getNome()+"\nDescrição:"+this.getDescricao());
     }
 
-    public int getNivel_minimo() {
-        return nivel_minimo;
-    }
-
+    //---------------MÉTODOS GETERS E SETTERS------------------//
+    
     public String getNome() {
         return nome;
     }
 
-    public Ambiente getAnterior() {
-        return anterior;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public void setAnterior(Ambiente anterior) {
-        this.anterior = anterior;
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public String getUrl_image() {
@@ -44,7 +65,15 @@ public abstract class Ambiente {
         this.url_image = url_image;
     }
 
-    public ArrayList<Ambiente> getAmbientes_internos() {
-        return ambientes_internos;
+    public int getNivel_minimo() {
+        return nivel_minimo;
+    }
+
+    public boolean isAcessivel() {
+        return acessivel;
+    }
+
+    public void setAcessivel(boolean acessivel) {
+        this.acessivel = acessivel;
     }
 }
