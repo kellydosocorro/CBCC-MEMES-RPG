@@ -8,14 +8,6 @@ import java.util.Random;
 public class Interno extends Ambiente{
     private ArrayList<Personagem> adversarios;
 
-    public Interno(ArrayList<Personagem> adversarios, String nome, int nivel_minimo, String url_image) {
-        super(nome, nivel_minimo, url_image);
-        this.adversarios = adversarios;
-    }
-
-    public Interno(String nome, int nivel_minimo) {
-        this(null, nome, nivel_minimo, null);
-    }
 
     public ArrayList<Personagem> getAdversarios() {
         return adversarios;
