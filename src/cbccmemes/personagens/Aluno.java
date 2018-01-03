@@ -16,16 +16,18 @@ public class Aluno extends Personagem {
     private ArrayList<Arma> armas = new ArrayList<>(getLIMITE_MOCHILA());
     private int barra_experiencia;
     private String classe_aluno;
+    private Ambiente ambiente_atual;
 
-    public Aluno(String nome, String classe_aluno, int nivel, int vida, int ataque, int defesa, int velocidade, Item item_batalha, Arma arma_batalha, double dinheiro) {
+    public Aluno(String nome, String classe_aluno, int nivel, int vida, int ataque, int defesa, int velocidade, Item item_batalha, Arma arma_batalha, double dinheiro, Ambiente atual) {
         super(nome, nivel, vida, ataque, defesa, velocidade, item_batalha, arma_batalha, dinheiro);
         this.barra_experiencia = 0;
         this.classe_aluno = classe_aluno;
         this.dinheiro = 10000;
+        this.ambiente_atual = atual;
     }
-
+    
     public Aluno() {
-        this("", "Biológicas", 1, 1000, 150, 150, 150, null, null, 10000);
+        this("", "Biológicas", 1, 1000, 150, 150, 150, null, null, 10000, null);
         this.barra_experiencia = 0;
     }
 
