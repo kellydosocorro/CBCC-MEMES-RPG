@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Aluno extends Personagem {
 
-    private static final int NIVEL_MAXIMO = 8;
+    public static final int NIVEL_MAXIMO = 8;
     private static final String classes_personagem[] = {"Biológicas", "Exatas", "Humanas"};
 
     public double dinheiro;

@@ -1,4 +1,3 @@
-
 package cbccmemes.extencoes;
 
 import java.awt.Graphics;
