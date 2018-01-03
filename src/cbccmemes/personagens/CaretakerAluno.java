@@ -15,7 +15,7 @@ public class CaretakerAluno {
         estados = new ArrayList<>();
     }
  
-    public void newMemento(AlunoMemento memento) {
+    public void novoMemento(AlunoMemento memento) {
         estados.add(memento);
     }
  
