@@ -1,21 +1,34 @@
 package cbccmemes.ambientes;
 
 import cbccmemes.extencoes.JPanelImage;
+import cbccmemes.personagens.Personagem;
 import java.util.ArrayList;
+import java.util.Arrays;
 /**
  * Calsse abstrata para representação de interface de Ambiente, seguindo o padrão de projeto 'Composite'.
  * @see cbccmemes.ambientes.AmbienteAberto
  * @see cbccmemes.ambientes.AmbienteFechado
  * @author 201604940039
  */
-public abstract class Ambiente {
+public abstract class Ambiente {    
     private final String nome;
     private String descricao;
     private int nivelMinimo;
     private boolean acessivel;
     private Ambiente pai;
     private JPanelImage image;
-    private ArrayList<String> operacoes;
+    private String[] operacoes;
+    
+    public static final String BATALHAR = "BATALHAR";
+    public static final String COMPRAR_ITEM = "COMP_ITEM";    
+    public static final String MUDAR_AMBIENTE = "MUDAR_AMB";
+    
+    public static final String LISTAR_AMBIENTES = "LIST_AMB";
+    public static final String LISTAR_ITENS = "LIST_ITENS";    
+    public static final String LISTAR_OPONENTES = "LIST_OPONENTES";
+        
+    public static final String VOLTAR = "VOLTAR";
+    public static final String PRINT_MAPA = "PMAP";
 
     public Ambiente(String nome, String descricao, int nivelMinimo){
         this.nome = nome;
@@ -61,6 +74,28 @@ public abstract class Ambiente {
         throw new UnsupportedOperationException();
     }
     /**
+     * Adiciona oponente que será disponível no Ambiente.
+     * @param oponente 
+     */
+    public void addOponente(Personagem oponente){
+        throw new UnsupportedOperationException();
+    }
+    /**
+     * Remove oponente do Ambiente.
+     * @param oponente
+     */
+    public void removeOponente(Personagem oponente){
+        throw new UnsupportedOperationException();
+    }
+    /**
+     * Pega um Personagem presente no Ambiente a partir do nome.
+     * @param nome
+     * @return Personagem
+     */
+    public Personagem getOponente(String nome){
+        throw new UnsupportedOperationException();
+    }
+    /**
      * Realiza operação de acordo com o parâmetro passado. Requer que o nome da operação exista nas posssibilidades do Ambiente.
      * @see cbccmemes.ambientes.Ambiente
      * @param nome Nome da operação
@@ -72,7 +107,11 @@ public abstract class Ambiente {
      * Imprime operações possíveis do Ambiente.
      */
     public void printOperacoes(){
-        System.out.println(operacoes);
+        if ( operacoes != null)
+            for (String str: operacoes)
+                System.out.print(str+" ");
+        
+        System.out.println("");
     }
     /**
      * Escreve dados do Ambiente.
@@ -82,11 +121,12 @@ public abstract class Ambiente {
         System.out.println("Nome: "+this.getNome()+"\nDescrição: "+this.getDescricao()+"\nNivel Mínimo: "+this.getNivelMinimo());
         
         if ( this.operacoes != null){
-            System.err.print("Operações: ");
+            System.out.print("Operações: ");
             this.printOperacoes();
         }
         if ( this.pai != null )
             System.out.println("Ambiente Pai: "+this.getPai().getNome());
+        System.out.println("");
     }
     
     //---------------MÉTODOS GETERS E SETTERS------------------//
@@ -142,11 +182,11 @@ public abstract class Ambiente {
         this.pai = pai;
     }
 
-    public ArrayList<String> getOperacoes() {
+    public String[] getOperacoes() {
         return operacoes;
     }
 
-    public void setOperacoes(ArrayList<String> operacoes) {
+    protected void setOperacoes(String[] operacoes) {
         this.operacoes = operacoes;
     }
 }

@@ -5,12 +5,13 @@ import java.util.ArrayList;
 
 public class AmbienteAberto extends Ambiente{
     private final ArrayList<Ambiente> destinos;
-    private final ArrayList<Personagem> personagens;
+    private final ArrayList<Personagem> oponentes;
             
     public AmbienteAberto(String nome, String descricao, int nivelMinimo) {
         super(nome, descricao, nivelMinimo);
         this.destinos = new ArrayList<>();
-        this.personagens = new ArrayList<>();
+        this.oponentes = new ArrayList<>();
+        super.setOperacoes(new String[]{BATALHAR,LISTAR_OPONENTES,LISTAR_AMBIENTES,MUDAR_AMBIENTE,VOLTAR,PRINT_MAPA});
     }
 
     @Override
@@ -42,6 +43,22 @@ public class AmbienteAberto extends Ambiente{
             amb.printDados();
         });
     }
+    
+    @Override
+    public void addOponente(Personagem oponente) {
+        oponentes.add(oponente);
+    }
+
+    @Override
+    public void removeOponente(Personagem oponente) {
+        oponentes.remove(oponente);
+    }
+
+    @Override
+    public Personagem getOponente(String nome) {
+        return buscaPersonagem(nome);
+    }
+    
     //------------MÉTODO LOCAL PARA BUSCA NO ARRAY DESTINOS-------------------//
     /**
      * Realiza busca de destino no array de destinos possíveis de acordo com o nome passado.
@@ -58,4 +75,11 @@ public class AmbienteAberto extends Ambiente{
         return null;
     }
     
+    private Personagem buscaPersonagem(String nome){
+        for ( Personagem pers: oponentes )
+            if ( pers.getNome().equalsIgnoreCase(nome) )
+                return pers;
+        
+        return null;
+    }
 }
