@@ -36,12 +36,20 @@ public class AmbienteAberto extends Ambiente{
     }
     
     @Override
-    public void printDados() {
+    public void printDadosCompletoMapa() {
         System.out.println("========================");
-        super.printDados();
+        super.printDadosCompletoMapa();
         destinos.forEach((amb) -> {
-            amb.printDados();
+            amb.printDadosCompletoMapa();
         });
+    }
+
+    @Override
+    protected void printMapaSimples(String str) {
+        super.printMapaSimples(str);
+        str+="  ";
+        for ( Ambiente aux: destinos )
+            aux.printMapaSimples(str);
     }
     
     @Override

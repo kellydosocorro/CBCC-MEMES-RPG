@@ -36,6 +36,8 @@ public class NewClass {
         mapa.addDestino(profissional);
         mapa.addDestino(pct);
         
-        mapa.printDados();
+        //mapa.printDadosCompletoMapa();
+        
+        mapa.printMapaSimples();
     }
 }

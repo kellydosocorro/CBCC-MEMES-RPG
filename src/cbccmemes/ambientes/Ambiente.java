@@ -3,7 +3,6 @@ package cbccmemes.ambientes;
 import cbccmemes.extencoes.JPanelImage;
 import cbccmemes.personagens.Personagem;
 import java.util.ArrayList;
-import java.util.Arrays;
 /**
  * Calsse abstrata para representação de interface de Ambiente, seguindo o padrão de projeto 'Composite'.
  * @see cbccmemes.ambientes.AmbienteAberto
@@ -114,10 +113,9 @@ public abstract class Ambiente {
         System.out.println("");
     }
     /**
-     * Escreve dados do Ambiente.
-     * E posteriormente os destínos possíveis.
+     * Imprime mapa completa a partir do ambiente atual.
      */
-    public void printDados(){
+    public void printDadosCompletoMapa(){
         System.out.println("Nome: "+this.getNome()+"\nDescrição: "+this.getDescricao()+"\nNivel Mínimo: "+this.getNivelMinimo());
         
         if ( this.operacoes != null){
@@ -129,6 +127,13 @@ public abstract class Ambiente {
         System.out.println("");
     }
     
+    public void printMapaSimples(){
+        this.printMapaSimples("");
+    }
+    
+    protected void printMapaSimples(String str){
+        System.out.println(str+"| "+this.getNome());
+    }        
     //---------------MÉTODOS GETERS E SETTERS------------------//
     public String getNome() {
         return nome;
