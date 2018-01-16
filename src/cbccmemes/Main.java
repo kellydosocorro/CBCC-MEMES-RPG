@@ -11,35 +11,33 @@ import cbccmemes.mochila.Item_Defesa;
 import cbccmemes.mochila.Item_Vida;
 import cbccmemes.personagens.Aluno;
 import cbccmemes.personagens.Professor;
+import cbccmemes.telas.TelaAmbientes;
 import cbccmemes.telas.TelaPrincipal;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 
 /**
  *
  * @author Kelly
  * Classe principal
  */
-public class Main {
-    private final ArrayList<Arma> armas_jogo;
-    private final ArrayList<Item> itens_jogo;
-    private Ambiente mapa_ufpa;
-    private TelaPrincipal tela ;
-
-    public Main() {
-        this.armas_jogo = new ArrayList<>();
-        this.itens_jogo = new ArrayList<>();
-    }
-    
+public class Main {    
     public static void main(String[] args) {
-        Main my_class = new Main();
-        my_class.addArmasDeJogo();
-        my_class.mapa_ufpa = my_class.addAmbientes();
+        Main m = new Main();
         
-        //my_class.tela = new TelaPrincipal(my_class.itens_jogo, my_class.armas_jogo);
-        //my_class.tela.setVisible(true);
+        ArrayList<Arma> armas_jogo = m.addArmasDeJogo();
+        ArrayList<Item> itens_jogo = m.addItensJogo();
+        Ambiente mapa_ufpa = m.addAmbientes();
+        
+        TelaPrincipal tela = new TelaPrincipal(itens_jogo, armas_jogo);
+        TelaAmbientes mapa = new TelaAmbientes(new JFrame(), mapa_ufpa);
+        tela.setMapa(mapa);
+                
+        tela.setVisible(true);
     }
     
-    public void addArmasDeJogo(){
+    public ArrayList<Arma> addArmasDeJogo(){
+        ArrayList<Arma> armas_jogo = new ArrayList<>();
         //Armas Comuns
         armas_jogo.add(new Arma("TCC", 500));
         armas_jogo.add(new Arma("Livro", 300));
@@ -58,10 +56,12 @@ public class Main {
         armas_jogo.add(new Arma("Miçangas", 150,"Humanas"));
         armas_jogo.add(new Arma("Xerox", 250,"Humanas"));
         armas_jogo.add(new Arma("Ocupação", 350,"Humanas"));
+        
+        return armas_jogo;
     }
         
-    public void addItensJogo(){
-        
+    public ArrayList<Item> addItensJogo(){
+        ArrayList<Item> itens_jogo = new ArrayList<>();
         //Itens comuns de ataque
                                     // Nome, Poder de ação
         itens_jogo.add(new Item_Ataque("Xerox", 200));
@@ -89,6 +89,8 @@ public class Main {
         itens_jogo.add(new Item_Vida(100, "Chop da BC", 1));
         itens_jogo.add(new Item_Vida(200, "Lanche do Ver-o-pesinho", 3));
         itens_jogo.add(new Item_Vida(300, "Bandejão do RU", 4));
+        
+        return itens_jogo;
     }
     
     public Ambiente addAmbientes(){

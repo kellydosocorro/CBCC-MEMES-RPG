@@ -1,5 +1,6 @@
 package cbccmemes.telas;
 
+import cbccmemes.ambientes.Ambiente;
 import cbccmemes.personagens.*;
 import cbccmemes.mochila.*;
 import java.util.ArrayList;
@@ -120,14 +121,11 @@ public class TelaPrincipal extends javax.swing.JFrame{
         if (!isEmpty(user)){
             inicio_jogo = true;
             jButton1.setEnabled(!inicio_jogo);
-            /*TelaAmbientes aux = new TelaAmbientes(this, this);
-            setVisible(false);
-            aux.setVisible(true);
-            setVisible(true);*/
-            AmbienteDeCombate ambiente = new AmbienteDeCombate(this);
-            this.setVisible(false);
-            ambiente.setVisible(true);
-            this.setVisible(true);
+            
+            if (mapa != null){
+                mapa.setVisible(true);
+            }else
+                JOptionPane.showMessageDialog(null,"Mapa não Criado");
         }else{
             jButton2ActionPerformed(evt);
         }
@@ -171,4 +169,13 @@ public class TelaPrincipal extends javax.swing.JFrame{
     //Ver possibilidade de mudança para ArrayList
     private ArrayList<Arma> armas_jogo = new ArrayList<>();
     private ArrayList<Item> itens_jogo = new ArrayList<>();
+    private TelaAmbientes mapa;
+
+    public TelaAmbientes getMapa() {
+        return mapa;
+    }
+
+    public void setMapa(TelaAmbientes mapa) {
+        this.mapa = mapa;
+    }
 }
