@@ -51,6 +51,22 @@ public class AmbienteAberto extends Ambiente{
         for ( Ambiente aux: destinos )
             aux.printMapaSimples(str);
     }
+
+    @Override
+    public String getMapaSimples(String str) {
+        StringBuffer aux = new StringBuffer();
+        
+        aux.append(super.getMapaSimples(str));
+        str+="  ";
+        for ( Ambiente amb: destinos)
+            aux.append(amb.getMapaSimples(str));
+        
+        return aux.toString();
+    }
+    
+    public ArrayList<Personagem> getOponentes() {
+        return oponentes;
+    }
     
     @Override
     public void addOponente(Personagem oponente) {
@@ -89,5 +105,10 @@ public class AmbienteAberto extends Ambiente{
                 return pers;
         
         return null;
+    }
+
+    @Override
+    public void operacao(String nome) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

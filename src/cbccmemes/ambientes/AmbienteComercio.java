@@ -18,6 +18,11 @@ public class AmbienteComercio extends Ambiente{
         this.itens = itens;
         super.setOperacoes(new String[]{LISTAR_ITENS,COMPRAR_ITEM});
     }
+
+    @Override
+    public void operacao(String nome) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }

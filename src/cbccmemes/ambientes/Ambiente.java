@@ -99,9 +99,7 @@ public abstract class Ambiente {
      * @see cbccmemes.ambientes.Ambiente
      * @param nome Nome da operação
      */
-    public void operacao(String nome){
-        throw new UnsupportedOperationException();
-    }
+    public abstract void operacao(String nome);
     /**
      * Imprime operações possíveis do Ambiente.
      */
@@ -133,7 +131,15 @@ public abstract class Ambiente {
     
     protected void printMapaSimples(String str){
         System.out.println(str+"| "+this.getNome());
-    }        
+    }
+    
+    public String getMapaSimples(){
+        return this.getMapaSimples("");
+    }
+    
+    public String getMapaSimples(String str){
+        return str+"| "+this.getNome()+"\n";
+    }
     //---------------MÉTODOS GETERS E SETTERS------------------//
     public String getNome() {
         return nome;
@@ -160,7 +166,7 @@ public abstract class Ambiente {
     }
     
     private void setNivelMinimo(int nivel){
-        if ( nivel > 0 && nivel <= cbccmemes.personagens.Aluno.NIVEL_MAXIMO ){
+        if ( nivel >= 0 && nivel <= cbccmemes.personagens.Aluno.NIVEL_MAXIMO ){
             nivelMinimo = nivel;
             if ( this.getNivelMinimo() == 1 )
                 this.setAcessivel(true);

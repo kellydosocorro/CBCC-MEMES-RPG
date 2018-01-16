@@ -35,9 +35,5 @@ public class NewClass {
         mapa.addDestino(basico);
         mapa.addDestino(profissional);
         mapa.addDestino(pct);
-        
-        //mapa.printDadosCompletoMapa();
-        
-        mapa.printMapaSimples();
     }
 }
