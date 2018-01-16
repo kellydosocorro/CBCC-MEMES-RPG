@@ -21,9 +21,6 @@ public class CriaPersonagem extends javax.swing.JDialog {
      * Creates new form CriaPersonagem
      */
     
-    CaretakerAluno caretaker;
-    protected Aluno jogador1;
-    
     public CriaPersonagem(Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -37,20 +34,6 @@ public class CriaPersonagem extends javax.swing.JDialog {
         this.armas = aux.getArms_jogo().toArray(armas);
         this.setDadosAluno();
     }
-    /* Regressa ao estado anterior de aluno */
-    public void voltarAluno(){
-        jogador1 = caretaker.getUltimoEstadoSalvo().getSaveAluno();
-    }
-    
-    public CriaPersonagem(){
-        caretaker = new CaretakerAluno();
-        jogador1 = new Aluno();
-    }
-    
-    /*public void novoAluno(Aluno player1){
-        caretaker.novoMemento(new AlunoMemento(jogador1));
-        jogador1 += player1;
-    }*/
     
     private void setDadosAluno(){
         if ( user == null ){

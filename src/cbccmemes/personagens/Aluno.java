@@ -182,8 +182,9 @@ public class Aluno extends Personagem {
             int ataque_user = this.getAtaque();
             
             if ( defesa_adv < ataque_user)
-                vida_adv -= ataque_user - defesa_adv;
-            
+                if(vida_adv >= 0) {
+                    vida_adv -= ataque_user - defesa_adv;
+                }
             adversario.setVida(vida_adv);
         }
     }

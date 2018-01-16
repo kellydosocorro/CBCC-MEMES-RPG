@@ -129,7 +129,7 @@ public class Main {
             casi.addOponente(aluno_exatas);
             
             AmbienteSala diretoria_facomp = new AmbienteSala("Diretoria FACOMP", "", 0);
-            icb.addOponente(Josivaldo);
+            diretoria_facomp.addOponente(Josivaldo);
             
             AmbienteSala diretoria_famat = new AmbienteSala("Diretoria FAMAT", "", 0);
             diretoria_famat.addOponente(professor);
