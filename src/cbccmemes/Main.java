@@ -9,6 +9,8 @@ import cbccmemes.mochila.Item;
 import cbccmemes.mochila.Item_Ataque;
 import cbccmemes.mochila.Item_Defesa;
 import cbccmemes.mochila.Item_Vida;
+import cbccmemes.personagens.Aluno;
+import cbccmemes.personagens.Professor;
 import cbccmemes.telas.TelaPrincipal;
 import java.util.ArrayList;
 
@@ -90,25 +92,54 @@ public class Main {
     }
     
     public Ambiente addAmbientes(){
+        
+        // nome, nivel, vida, ataque, defesa, velocidade, item_batalha, arma_batalha, dinheiro
+        Professor Josivaldo = new Professor("Josivaldo", 3, 20000, 8000, 5700, 60, null, null, 100000);
+        Professor professor = new Professor("Adversario", 0, 10000, 1000, 800, 40, null, null, 10000);
+        
+        // nome, classe, nivel, vida, ataque, defesa, velocidade, item, arma, dinheiro, atual
+        Aluno Lucas = new Aluno("Lucas", "Exatas", 2, 8000, 400, 600, 20, null, null, 10000, null);
+        Aluno aluno_bio = new Aluno("Adversario", "Biológicas", 1, 5000, 400, 200, 10, null, null, 5000, null);
+        Aluno aluno_exatas = new Aluno("Adversario", "Exatas", 1, 7000, 300, 400, 10, null, null, 4000, null);
+        
         Ambiente ufpa = new AmbienteAberto("UFPA", "Cidade Universitária Prof.José da Silveira Netto", 0);
+        
         
         AmbienteAberto campus1 = new AmbienteAberto("Básico", "Campus Setor 1", 0);
         AmbientePredio icb = new AmbientePredio("ICB","Instituto de Ciências Biológicas", 3);
+            icb.addOponente(professor);
+            
             AmbienteSala biomed = new AmbienteSala("Biomedicina", "Faculdade de Biomedicina", 0);
+            biomed.addOponente(aluno_bio);
+                
             AmbienteSala biotec = new AmbienteSala("Biotecnologia", "Faculdade de Biotecnologia", 0);
+            biotec.addOponente(aluno_bio);
+        
         icb.addDestino(biomed);
-        icb.addDestino(biotec);        
+        icb.addDestino(biotec);   
+        
         AmbientePredio icen = new AmbientePredio("ICEN","Instituto de Ciências Exatas e Naturais", 0);
             AmbienteSala auditorio_icen = new AmbienteSala("Auditório","Auditório Icen", 0);
+            auditorio_icen.addOponente(professor);
+            
             AmbienteSala cacc = new AmbienteSala("CACC","Centro Acadêmico de Ciência da Computação", 0);
+            cacc.addOponente(Lucas);
+            
             AmbienteSala casi = new AmbienteSala("CASI","Centro Acadêmico de Sistemas de Informação", 0);
+            casi.addOponente(aluno_exatas);
+            
             AmbienteSala diretoria_facomp = new AmbienteSala("Diretoria FACOMP", "", 0);
+            icb.addOponente(Josivaldo);
+            
             AmbienteSala diretoria_famat = new AmbienteSala("Diretoria FAMAT", "", 0);
-        icen.addDestino(auditorio_icen);
+            diretoria_famat.addOponente(professor);
+            
+            icen.addDestino(auditorio_icen);
         icen.addDestino(cacc);
         icen.addDestino(casi);
         icen.addDestino(diretoria_facomp);
         icen.addDestino(diretoria_famat);
+        
         AmbientePredio mirante = new AmbientePredio("Mirante", "Mirante do Rio", 1);
             for (int i=0; i<4; i++){
                 mirante.addDestino(new AmbientePredio("Andar "+(i+1),"Salas de "+(i+1)+"00-"+(i+1)+"16", i+1));
