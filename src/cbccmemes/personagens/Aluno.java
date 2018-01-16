@@ -26,6 +26,10 @@ public class Aluno extends Personagem {
         this.ambiente_atual = atual;
     }
     
+    public double getDinheiro() {
+        return dinheiro;
+    }
+    
     public Aluno() {
         this("", "Biológicas", 1, 1000, 150, 150, 150, null, null, 10000, null);
         this.barra_experiencia = 0;
@@ -159,7 +163,42 @@ public class Aluno extends Personagem {
     public ArrayList<Item> getItens() {
         return itens;
     }
-
+    
+    // Verifica a disponibilidade de espaço na mochila
+    public boolean verificaEspacoMochila(){
+        boolean resposta;
+        resposta = (armas.size() + itens.size()) < getLIMITE_MOCHILA();
+        return resposta;
+    }
+    
+    // Setar novo item na mochila
+    public void setNovoItem(Item novoItem){
+        itens.add(novoItem);    
+    }
+    
+    public void removeItem(int i){
+        this.itens.remove(i);
+    }
+    
+    public Item pesquisaItem(String nome){
+        for (Item aux: itens)
+            if ( aux.getNome().equals(nome) ){
+                return aux;
+            }
+        return null;
+    }        
+    
+    // Setar nova arma na mochila
+    public void setNovaArma(Arma novaArma){
+        armas.add(novaArma);
+    }
+    
+    public void buscaItem(Item pesquisa){
+        for(Item aux: itens){
+            
+        }
+    }
+    
     public void setItens(ArrayList<Item> itens) {
         this.itens = itens;
     }
@@ -181,7 +220,7 @@ public class Aluno extends Personagem {
             int defesa_adv = adversario.getDefesa();
             int ataque_user = this.getAtaque();
             
-            if ( defesa_adv < ataque_user)
+            if ( defesa_adv < ataque_user )
                 if(vida_adv >= 0) {
                     vida_adv -= ataque_user - defesa_adv;
                 }

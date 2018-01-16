@@ -6,6 +6,7 @@ public class Arma {
     private int poder_ataque;
     private String classe_associada;
     private int nivel_minimo;
+    public double dinheiro;
 
     public Arma(String nome, int poder_ataque, String classe_associada, int nivel_minimo) {
         this.nome = nome;
