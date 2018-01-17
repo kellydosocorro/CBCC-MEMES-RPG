@@ -184,7 +184,12 @@ public abstract class Ambiente {
     public void setAcessivel(boolean acessivel) {
         this.acessivel = acessivel;
     }
-
+    
+    /**
+     * Retorna objeto pai de ambiente atual.
+     * Em caso de inexistência, retorna null.
+     * @return Ambiente ou null
+     */
     public Ambiente getPai() {
         return pai;
     }

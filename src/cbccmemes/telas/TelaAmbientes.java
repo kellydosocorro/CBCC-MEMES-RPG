@@ -7,10 +7,8 @@ package cbccmemes.telas;
 
 import cbccmemes.ambientes.Ambiente;
 import cbccmemes.personagens.Personagem;
-import java.awt.Component;
-import javax.swing.AbstractListModel;
-import javax.swing.ListModel;
-import javax.swing.event.ListDataListener;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -20,6 +18,8 @@ public class TelaAmbientes extends javax.swing.JDialog {
 
     /**
      * Creates new form Ambientes
+     * @param parent
+     * @param modal
      */
     public TelaAmbientes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -28,26 +28,8 @@ public class TelaAmbientes extends javax.swing.JDialog {
 
     public TelaAmbientes(java.awt.Frame parent, Ambiente mapa_jogo) {
         this(parent, true);
-        this.mapa_jogo = mapa_jogo;
-        AbstractListModel<String> list = new AbstractListModel<String>() {
-            String[] str;
-            
-            public void setStr(String[] str){
-                this.str = str;
-            }
-            
-            @Override
-            public int getSize() {
-                return str.length;
-            }
-
-            @Override
-            public String getElementAt(int index) {
-                return str[index];
-            }
-        };
-        
-        this.listMap.setModel(list);
+        this.AmbienteAtual = mapa_jogo;
+        this.setComboBoxs();
     }
     
 
@@ -56,8 +38,14 @@ public class TelaAmbientes extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        listMap = new javax.swing.JList<>();
+        Destinos = new javax.swing.JComboBox<>();
+        Operacoes = new javax.swing.JComboBox<>();
+        DestinosLabel = new javax.swing.JLabel();
+        OpLabels = new javax.swing.JLabel();
+        AmbAtual = new javax.swing.JLabel();
+        TextAmbAtual = new javax.swing.JLabel();
+        Voltar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Mapa");
@@ -67,12 +55,33 @@ public class TelaAmbientes extends javax.swing.JDialog {
         setResizable(false);
         setSize(new java.awt.Dimension(560, 400));
 
-        listMap.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        Destinos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DestinosActionPerformed(evt);
+            }
         });
-        jScrollPane1.setViewportView(listMap);
+
+        DestinosLabel.setText("Destinos");
+
+        OpLabels.setText("Operações");
+
+        AmbAtual.setText("Ambiente Atual: ");
+
+        TextAmbAtual.setText("Texto");
+
+        Voltar.setText("Voltar");
+        Voltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VoltarActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Ir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -80,22 +89,46 @@ public class TelaAmbientes extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(AmbAtual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(TextAmbAtual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(DestinosLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                    .addComponent(Destinos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(OpLabels)
+                    .addComponent(Operacoes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Voltar)
+                .addContainerGap(265, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(259, Short.MAX_VALUE))
+                .addComponent(AmbAtual)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TextAmbAtual)
+                .addGap(18, 18, 18)
+                .addComponent(OpLabels)
+                .addGap(18, 18, 18)
+                .addComponent(Operacoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(DestinosLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Destinos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Voltar)
+                    .addComponent(jButton1))
+                .addContainerGap(221, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,6 +138,27 @@ public class TelaAmbientes extends javax.swing.JDialog {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void DestinosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DestinosActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_DestinosActionPerformed
+
+    private void VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed
+        // TODO add your handling code here:
+        if (AmbienteAtual.getPai() != null){
+            AmbienteAtual = AmbienteAtual.getPai();
+            setComboBoxs();
+        }
+    }//GEN-LAST:event_VoltarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if (AmbienteAtual.getDestino((String) Destinos.getSelectedItem()) != null ){
+            AmbienteAtual = AmbienteAtual.getDestino((String) Destinos.getSelectedItem());
+            setComboBoxs();
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,15 +213,31 @@ public class TelaAmbientes extends javax.swing.JDialog {
         this.user = user;
     }
     
-    private String printMap(){
-        return "";
+    private void setComboBoxs(){
+        ArrayList<Ambiente> destinos = AmbienteAtual.getDestinos();
+        
+        Destinos.removeAllItems();
+        
+        destinos.forEach((Ambiente aux) -> {
+            Destinos.addItem(aux.getNome());
+        });
+        
+        Operacoes.setModel(new DefaultComboBoxModel<>(AmbienteAtual.getOperacoes()));
+        
+        TextAmbAtual.setText(AmbienteAtual.getNome());
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel AmbAtual;
+    private javax.swing.JComboBox<String> Destinos;
+    private javax.swing.JLabel DestinosLabel;
+    private javax.swing.JLabel OpLabels;
+    private javax.swing.JComboBox<String> Operacoes;
+    private javax.swing.JLabel TextAmbAtual;
+    private javax.swing.JButton Voltar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList<String> listMap;
     // End of variables declaration//GEN-END:variables
-    private Ambiente mapa_jogo;
+    private Ambiente AmbienteAtual;
     private Personagem user;
 }

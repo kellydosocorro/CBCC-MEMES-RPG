@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author hundson
  */
-public class AmbienteSala extends Ambiente{
+public class AmbienteSala extends AmbienteFechado{
     private final ArrayList<Personagem> oponentes;
     
     public AmbienteSala(String nome, String descricao, int nivelMinimo) {
