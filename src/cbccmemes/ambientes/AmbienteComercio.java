@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class AmbienteComercio extends Ambiente{
     private final ArrayList<Item> itens;
     private final ArrayList<Arma> armas;
+   
     Aluno user = new Aluno();
 
     public AmbienteComercio(String nome, String descricao, int nivelMinimo, ArrayList<Arma> armas, ArrayList<Item> itens) {
@@ -23,10 +24,10 @@ public class AmbienteComercio extends Ambiente{
     
     public void compraItem(Aluno user, Item item){
         if(user.getNivel() >= item.getNivel_minimo()){    
-            if(user.getDinheiro() >= item.dinheiro){
+            if(user.getDinheiro() >= item.preco){
                 boolean r = user.verificaEspacoMochila();
                 if(r == true){
-                    user.setDinheiro(user.getDinheiro() - item.dinheiro);
+                    user.setDinheiro(user.getDinheiro() - item.preco);
                     user.setNovoItem(item);
                 }  
             }

@@ -4,13 +4,44 @@
  * and open the template in the editor.
  */
 package cbccmemes.ambientes;
+
+import cbccmemes.mochila.Item;
+import cbccmemes.mochila.Item_Ataque;
+import cbccmemes.mochila.Item_Defesa;
+import cbccmemes.mochila.Item_Vida;
+import cbccmemes.personagens.Aluno;
+import java.util.ArrayList;
+
 /**
  *
  * @author 201604940039
  */
 public class NewClass {
     public static void main(String[] args) {
-        Ambiente mapa = new AmbienteAberto("UFPA", "Campus Belém", 1);
+        
+        Aluno user = new Aluno();
+        
+        final ArrayList<Item> venda = new ArrayList<>();
+        
+        //Itens comuns de defesa
+                                    // Nome, Poder de ação
+        venda.add(new Item_Defesa("Livro", 100));
+        venda.add(new Item_Defesa("Exercícios feitos", 150));
+        venda.add(new Item_Defesa("Artigo", 350));
+
+        //Itens de vida
+                                    // Valor, Nome, Nível
+        venda.add(new Item_Vida(50, "Garrfa de Água", 0));
+        venda.add(new Item_Vida(100, "Chop da BC", 1));
+        venda.add(new Item_Vida(200, "Lanche do Ver-o-pesinho", 3));
+        venda.add(new Item_Vida(300, "Bandejão do RU", 4));
+        
+        AmbienteComercio loja = new AmbienteComercio("Loja", "Compra e venda de itens", 1, null, venda);
+        Item teste = new Item_Vida(300, "Bandejão do RU", 1);
+        
+        loja.compraItem(user, teste);
+        
+        /* Ambiente mapa = new AmbienteAberto("UFPA", "Campus Belém", 1);
         
         Ambiente profissional = new AmbienteAberto("CAMPUS II", "Profissional", 1);
             Ambiente itec = new AmbienteAberto("ITEC", "O Instituto de Tecnologia da Universidade Federal do Pará, criado por transformação ao Centro Tecnológico, em reunião do CONSUN realizada no dia 21 de maio de 2007, abriga em sua estrutura 18 subunidades, sendo 9 Faculdades, com 11 cursos, e  9 Programas de Pós-Graduação. Assim denominadas", 1);
@@ -33,6 +64,6 @@ public class NewClass {
         
         mapa.addDestino(basico);
         mapa.addDestino(profissional);
-        mapa.addDestino(pct);
+        mapa.addDestino(pct);*/
     }
 }
