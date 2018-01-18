@@ -1,8 +1,8 @@
 package cbccmemes.personagens;
 
-import cbccmemes.ambientes.Ambiente;
 import cbccmemes.mochila.Arma;
 import cbccmemes.mochila.Item;
+import cbccmemes.telas.DescricaoPersonagem;
 
 public class Professor extends Personagem{
 
@@ -12,12 +12,27 @@ public class Professor extends Personagem{
 
     @Override
     public void atacar(Personagem adversario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (adversario.getItem_equipado() != null){
+            
+        }else {
+            int vida_adv = adversario.getVida();
+            int defesa_adv = adversario.getDefesa();
+            int ataque_user = this.getAtaque();
+            
+            if ( defesa_adv < ataque_user )
+                if(vida_adv >= 0) {
+                    vida_adv -= ataque_user - defesa_adv;
+                }
+            adversario.setVida(vida_adv);
+        }
     }
 
     @Override
     public void descricaoPerosnagem(java.awt.Frame parent) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        DescricaoPersonagem tela = new DescricaoPersonagem(parent, true);
+        tela.setDados(this);
+        tela.setVisible(true);
     }
+
     
 }
