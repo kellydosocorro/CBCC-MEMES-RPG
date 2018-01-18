@@ -5,6 +5,7 @@
  */
 package cbccmemes.ambientes;
 
+import cbccmemes.mochila.Arma;
 import cbccmemes.mochila.Item;
 import cbccmemes.mochila.Item_Ataque;
 import cbccmemes.mochila.Item_Defesa;
@@ -19,7 +20,7 @@ import java.util.ArrayList;
 public class NewClass {
     public static void main(String[] args) {
         
-        Aluno user = new Aluno();
+        Aluno user1 = new Aluno();
         
         final ArrayList<Item> venda = new ArrayList<>();
         
@@ -31,15 +32,29 @@ public class NewClass {
 
         //Itens de vida
                                     // Valor, Nome, Nível
+                                    
+         
+                                    
         venda.add(new Item_Vida(50, "Garrfa de Água", 0));
         venda.add(new Item_Vida(100, "Chop da BC", 1));
         venda.add(new Item_Vida(200, "Lanche do Ver-o-pesinho", 3));
         venda.add(new Item_Vida(300, "Bandejão do RU", 4));
         
         AmbienteComercio loja = new AmbienteComercio("Loja", "Compra e venda de itens", 1, null, venda);
-        Item teste = new Item_Vida(300, "Bandejão do RU", 1);
         
-        loja.compraItem(user, teste);
+        //String nome, String classe, int poder, int nivel_minimo, double preco
+        Item teste = new Item_Vida("Bandejão do RU", "", 400, 1, 50);
+        // String nome, int poder_ataque, String classe_associada, int nivel_minimo, double preco
+        Arma teste1 = new Arma("Tesoura", 200, "", 1, 100);
+        
+        user1.setNome("Personagem 1");
+        user1.setDinheiro(1000);
+        
+        loja.compraItem(user1, teste);
+        loja.printInfoUser(user1);
+        
+        loja.compraArma(user1, teste1);
+        loja.printInfoUser(user1);
         
         /* Ambiente mapa = new AmbienteAberto("UFPA", "Campus Belém", 1);
         

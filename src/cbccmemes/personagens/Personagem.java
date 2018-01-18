@@ -16,9 +16,8 @@ public abstract class Personagem{
     private Item item_equipado;
     private Arma arma_equipada;
     private ImageIcon imagem;
-    private double dinheiro;
 
-    public Personagem(String nome, int nivel, int vida, int ataque, int defesa, int velocidade, Item item_batalha, Arma arma_batalha, double dinheiro) {
+    public Personagem(String nome, int nivel, int vida, int ataque, int defesa, int velocidade, Item item_batalha, Arma arma_batalha) {
         this.nome = nome;
         this.nivel = nivel;
         this.vida = vida;
@@ -28,7 +27,6 @@ public abstract class Personagem{
         this.velocidade = velocidade;
         this.item_equipado = item_batalha;
         this.arma_equipada = arma_batalha;
-        this.dinheiro = dinheiro; // Adicionando em 12.12.2017
         this.imagem = new ImageIcon(getClass().getResource("/cbccmemes/imagens/avatar.png"));
     }
     
@@ -47,12 +45,6 @@ public abstract class Personagem{
     public void setVida(int vida) {
         this.vida = vida;
     }  
-    
-    // Adicionando em 12.12.2017
-    public double setDinheiro(double dinheiro){
-        this.dinheiro = dinheiro;
-        return dinheiro;
-    }
 
     public int getAtaque() {
         return ataque;

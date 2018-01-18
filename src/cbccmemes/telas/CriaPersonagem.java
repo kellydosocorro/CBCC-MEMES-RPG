@@ -38,8 +38,8 @@ public class CriaPersonagem extends javax.swing.JDialog {
     private void setDadosAluno(){
         if ( user == null ){
             user = new Aluno();
-            TextNivel.setText(""+user.getNivel());
-            jTextField1.setText(""+user.getDinheiro()); // Adicionado em 12.12.2017
+            TextNivel.setText(""+ user.getNivel());
+            jTextField1.setText(""+user.getDinheiro());
             this.setListArmasDisponiveis(Integer.parseInt(TextNivel.getText()), getClasseSelected(), armas);
         }else{
             TextNome.setText(user.getNome());
@@ -335,7 +335,7 @@ public class CriaPersonagem extends javax.swing.JDialog {
         user.setDefesa((int) defesa_value.getValue());
         user.setVelocidade((int) velocidade_value.getValue());
         user.setVida((int) crg_value.getValue());
-        double Dinheiro = user.setDinheiro(1000);
+        user.setDinheiro(1000);
         aux.setUser(user);
         
         for (Arma arma1: aux.getUser().getArmas())

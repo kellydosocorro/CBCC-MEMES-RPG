@@ -22,12 +22,19 @@ public class AmbienteComercio extends Ambiente{
         super.setOperacoes(new String[]{LISTAR_ITENS,COMPRAR_ITEM});
     }
     
+    public void printInfoUser(Aluno user){
+        System.out.println("Usuário: " + user.getNome());
+        System.out.println("Dinheiro atual: " + user.getDinheiro());
+        System.out.println("Itens atuais: " + user.getItens());
+        System.out.println("Armas atuais: " + user.getArmas() + "\n");
+    }
+    
     public void compraItem(Aluno user, Item item){
         if(user.getNivel() >= item.getNivel_minimo()){    
             if(user.getDinheiro() >= item.preco){
                 boolean r = user.verificaEspacoMochila();
                 if(r == true){
-                    user.setDinheiro(user.getDinheiro() - item.preco);
+                    user.setDinheiro(user.getDinheiro()-item.preco);
                     user.setNovoItem(item);
                 }  
             }
@@ -36,19 +43,22 @@ public class AmbienteComercio extends Ambiente{
     
     public void compraArma(Aluno user, Arma arma){
         if(user.getNivel() >= arma.getNivel_minimo()){    
-            if(user.getDinheiro() >= arma.dinheiro){
+            if(user.getDinheiro() >= arma.preco){
                 boolean r = user.verificaEspacoMochila();
                 if(r == true){
-                    user.setDinheiro(user.getDinheiro() - arma.dinheiro);
+                    user.setDinheiro(user.getDinheiro() - arma.preco);
                     user.setNovaArma(arma);
                 }  
             }
         }
     }
     
+    /*
     public void venderItem(Aluno user, String nome_Item){
         //removeItem(pesquisaItem(nome_Item));
-    }
+        user.removeItem();
+        
+    }*/
 
     @Override
     public void operacao(String nome) {
