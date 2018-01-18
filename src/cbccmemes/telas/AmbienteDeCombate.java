@@ -9,6 +9,7 @@ import cbccmemes.personagens.Aluno;
 import cbccmemes.personagens.Personagem;
 import java.awt.Frame;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -61,6 +62,7 @@ public class AmbienteDeCombate extends javax.swing.JDialog {
     }
 
     public void setTurno() {
+        adversario.atacar(user);
         this.turno++;
         this.setDadosPersonagens();
     }
@@ -262,6 +264,13 @@ public class AmbienteDeCombate extends javax.swing.JDialog {
         // TODO add your handling code here:
         user.atacar(adversario);
         this.setTurno();
+        if (adversario.getVida() <= 0){
+            JOptionPane.showMessageDialog(null,"You Win");
+            this.dispose();
+        }else if (user.getVida() <= 0){
+            JOptionPane.showMessageDialog(null,"You Lose");
+            this.dispose();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

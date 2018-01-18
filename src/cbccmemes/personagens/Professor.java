@@ -12,19 +12,12 @@ public class Professor extends Personagem{
 
     @Override
     public void atacar(Personagem adversario) {
-        if (adversario.getItem_equipado() != null){
+        int soma = this.getAtaque()+adversario.getDefesa();
+            double percent = (this.getAtaque()*100)/soma;
             
-        }else {
-            int vida_adv = adversario.getVida();
-            int defesa_adv = adversario.getDefesa();
-            int ataque_user = this.getAtaque();
-            
-            if ( defesa_adv < ataque_user )
-                if(vida_adv >= 0) {
-                    vida_adv -= ataque_user - defesa_adv;
-                }
-            adversario.setVida(vida_adv);
-        }
+            int ataque = (int) (this.getAtaque()*(percent/100));
+        
+            adversario.setVida(adversario.getVida()-ataque);
     }
 
     @Override
