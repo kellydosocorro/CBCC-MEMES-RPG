@@ -55,10 +55,8 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="AmbAtual" max="32767" attributes="0"/>
-                          <Component id="TextAmbAtual" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="AmbAtual" max="32767" attributes="0"/>
+                      <Component id="TextAmbAtual" max="32767" attributes="0"/>
                       <Component id="DestinosLabel" alignment="0" pref="150" max="32767" attributes="0"/>
                       <Component id="Destinos" alignment="0" max="32767" attributes="0"/>
                       <Component id="OpLabels" alignment="0" min="-2" max="-2" attributes="0"/>

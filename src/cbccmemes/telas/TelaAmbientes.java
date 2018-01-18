@@ -156,7 +156,9 @@ public class TelaAmbientes extends javax.swing.JDialog {
         // TODO add your handling code here:
         if (AmbienteAtual.getDestino((String) Destinos.getSelectedItem()) != null ){
             AmbienteAtual = AmbienteAtual.getDestino((String) Destinos.getSelectedItem());
-            setComboBoxs();
+            TextAmbAtual.setText(AmbienteAtual.getNome());
+            if ( AmbienteAtual.getDestinos() != null )
+                setComboBoxs();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

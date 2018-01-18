@@ -39,17 +39,15 @@ public class Main {
         
         user.addArmaMochila(new Arma("Arma Mochila 2", 0));
         user.addItemMochila(new Item_Ataque("Item de Ataque2", 150));
-        //System.out.println(Arrays.toString(user.getNomesArmas()));
-        //System.out.println(Arrays.toString(user.getNomesItens()));
         
-        TelaPrincipal tela = new TelaPrincipal(user,itens_jogo, armas_jogo);
+        TelaPrincipal tela = new TelaPrincipal(null,itens_jogo, armas_jogo);
         
-        tela.setUser(user);
+        //tela.setUser(user);
         
         TelaAmbientes mapa = new TelaAmbientes(new JFrame(), mapa_ufpa);
         tela.setMapa(mapa);
                 
-        tela.setVisible(true);
+        //tela.setVisible(true);
         
         AmbienteDeCombate ab = new AmbienteDeCombate(tela, user, new Professor("Gustavo", 1, 1000, 200, 200, 100, null, null, 150));
         ab.setVisible(true);
