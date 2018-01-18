@@ -19,10 +19,10 @@ public class Aluno extends Personagem {
     private Ambiente ambiente_atual;
 
     public Aluno(String nome, String classe_aluno, int nivel, int vida, int ataque, int defesa, int velocidade, Item item_batalha, Arma arma_batalha, double dinheiro, Ambiente atual) {
-        super(nome, nivel, vida, ataque, defesa, velocidade, item_batalha, arma_batalha, dinheiro);
+        super(nome, nivel, vida, ataque, defesa, velocidade, item_batalha, arma_batalha);
         this.barra_experiencia = 0;
         this.classe_aluno = classe_aluno;
-        this.dinheiro = 10000;
+        this.dinheiro = dinheiro;
         this.ambiente_atual = atual;
     }
     
@@ -30,8 +30,12 @@ public class Aluno extends Personagem {
         return dinheiro;
     }
     
+    public void setDinheiro(double dinheiro){
+        this.dinheiro = dinheiro;
+    }
+    
     public Aluno() {
-        this("", "Biológicas", 1, 1000, 150, 150, 150, null, null, 10000, null);
+        this("", "Biológicas", 1, 1000, 150, 150, 150, null, null, 1000, null);
         this.barra_experiencia = 0;
     }
 

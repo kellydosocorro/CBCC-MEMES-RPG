@@ -6,13 +6,21 @@ public class Arma {
     private int poder_ataque;
     private String classe_associada;
     private int nivel_minimo;
-    public double dinheiro;
+    public double preco;
 
     public Arma(String nome, int poder_ataque, String classe_associada, int nivel_minimo) {
         this.nome = nome;
         this.poder_ataque = poder_ataque;
         this.classe_associada = classe_associada;
         this.nivel_minimo = nivel_minimo;
+    }
+    
+    public Arma(String nome, int poder_ataque, String classe_associada, int nivel_minimo, double preco) {
+        this.nome = nome;
+        this.poder_ataque = poder_ataque;
+        this.classe_associada = classe_associada;
+        this.nivel_minimo = nivel_minimo;
+        this.preco = preco;
     }
     
     public Arma(){

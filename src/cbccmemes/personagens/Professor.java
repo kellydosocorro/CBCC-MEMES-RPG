@@ -7,7 +7,7 @@ import cbccmemes.telas.DescricaoPersonagem;
 public class Professor extends Personagem{
 
     public Professor(String nome, int nivel, int vida, int ataque, int defesa, int velocidade, Item item_batalha, Arma arma_batalha, double dinheiro) {
-        super(nome, nivel, vida, ataque, defesa, velocidade, item_batalha, arma_batalha, dinheiro);
+        super(nome, nivel, vida, ataque, defesa, velocidade, item_batalha, arma_batalha);
     }
 
     @Override
