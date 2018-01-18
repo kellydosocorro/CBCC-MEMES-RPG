@@ -39,13 +39,14 @@ public class CriaPersonagem extends javax.swing.JDialog {
         if ( user == null ){
             user = new Aluno();
             TextNivel.setText(""+user.getNivel());
-            jTextField1.setText(""+user.setDinheiro(1000)); // Adicionado em 12.12.2017
+            jTextField1.setText(""+user.getDinheiro()); // Adicionado em 12.12.2017
             this.setListArmasDisponiveis(Integer.parseInt(TextNivel.getText()), getClasseSelected(), armas);
         }else{
             TextNome.setText(user.getNome());
             TextNivel.setText(""+user.getNivel());
             ClassesSelect.setSelectedItem(user.getClasse_aluno());
             ArmasSelect.setSelectedItem(user.getArma_equipada().getNome());
+            jTextField1.setText(""+user.getDinheiro()); // Adicionado em 12.12.2017
         }
     }
     

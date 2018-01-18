@@ -9,11 +9,14 @@ import javax.swing.JOptionPane;
 public class TelaPrincipal extends javax.swing.JFrame{
     
     private TelaPrincipal() {
+        this.tela_descricao = new DescricaoPersonagem(this, true);
         initComponents();
     }
 
-    public TelaPrincipal(ArrayList<Item> itens_jogo, ArrayList<Arma> armas_jogo) {
+    public TelaPrincipal(Aluno user, ArrayList<Item> itens_jogo, ArrayList<Arma> armas_jogo) {
         this();
+        this.tela_descricao = new DescricaoPersonagem(this, true);
+        this.user = user;
         this.itens_jogo = itens_jogo;
         this.armas_jogo = armas_jogo;
     }    
@@ -112,7 +115,9 @@ public class TelaPrincipal extends javax.swing.JFrame{
         if (isEmpty(user)){
             JOptionPane.showMessageDialog(rootPane,"Nenhum Personagem Criado");
         }else{
-            user.descricaoPerosnagem(this);
+            //user.descricaoPerosnagem(this);
+            tela_descricao.setDados(user);
+            tela_descricao.setVisible(true);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -170,6 +175,7 @@ public class TelaPrincipal extends javax.swing.JFrame{
     private ArrayList<Arma> armas_jogo = new ArrayList<>();
     private ArrayList<Item> itens_jogo = new ArrayList<>();
     private TelaAmbientes mapa;
+    private DescricaoPersonagem tela_descricao;
 
     public TelaAmbientes getMapa() {
         return mapa;

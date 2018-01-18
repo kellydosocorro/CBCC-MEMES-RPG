@@ -2,7 +2,7 @@ package cbccmemes.personagens;
 
 import cbccmemes.mochila.Arma;
 import cbccmemes.mochila.Item;
-import cbccmemes.telas.DescricaoPersonagem;
+import java.awt.Frame;
 
 public class Professor extends Personagem{
 
@@ -28,11 +28,8 @@ public class Professor extends Personagem{
     }
 
     @Override
-    public void descricaoPerosnagem(java.awt.Frame parent) {
-        DescricaoPersonagem tela = new DescricaoPersonagem(parent, true);
-        tela.setDados(this);
-        tela.setVisible(true);
+    public String descricaoPerosnagem(Frame parent) {
+        return "";
     }
-
     
 }

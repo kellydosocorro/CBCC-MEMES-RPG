@@ -11,9 +11,11 @@ import cbccmemes.mochila.Item_Defesa;
 import cbccmemes.mochila.Item_Vida;
 import cbccmemes.personagens.Aluno;
 import cbccmemes.personagens.Professor;
+import cbccmemes.telas.AmbienteDeCombate;
 import cbccmemes.telas.TelaAmbientes;
 import cbccmemes.telas.TelaPrincipal;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 /**
@@ -29,11 +31,28 @@ public class Main {
         ArrayList<Item> itens_jogo = m.addItensJogo();
         Ambiente mapa_ufpa = m.addAmbientes();
         
-        TelaPrincipal tela = new TelaPrincipal(itens_jogo, armas_jogo);
+        Aluno user = new Aluno("User1", "", 1, 1000, 150, 50, 20, new Item_Ataque("Teste Item", 150), new Arma("Teste Arma", 200), 1000);
+        
+        user.setImagem(new ImageIcon(m.getClass().getResource("/cbccmemes/imagens/icones/1.jpg")));
+        user.addArmaMochila(new Arma("Arma Mochila 1", 0));
+        user.addItemMochila(new Item_Ataque("Item de Ataque1", 150));
+        
+        user.addArmaMochila(new Arma("Arma Mochila 2", 0));
+        user.addItemMochila(new Item_Ataque("Item de Ataque2", 150));
+        //System.out.println(Arrays.toString(user.getNomesArmas()));
+        //System.out.println(Arrays.toString(user.getNomesItens()));
+        
+        TelaPrincipal tela = new TelaPrincipal(user,itens_jogo, armas_jogo);
+        
+        tela.setUser(user);
+        
         TelaAmbientes mapa = new TelaAmbientes(new JFrame(), mapa_ufpa);
         tela.setMapa(mapa);
                 
         tela.setVisible(true);
+        
+        AmbienteDeCombate ab = new AmbienteDeCombate(tela, user, new Professor("Gustavo", 1, 1000, 200, 200, 100, null, null, 150));
+        ab.setVisible(true);
     }
     
     public ArrayList<Arma> addArmasDeJogo(){
@@ -100,9 +119,9 @@ public class Main {
         Professor professor = new Professor("Adversario", 0, 10000, 1000, 800, 40, null, null, 10000);
         
         // nome, classe, nivel, vida, ataque, defesa, velocidade, item, arma, dinheiro, atual
-        Aluno Lucas = new Aluno("Lucas", "Exatas", 2, 8000, 400, 600, 20, null, null, 10000, null);
-        Aluno aluno_bio = new Aluno("Adversario", "Biológicas", 1, 5000, 400, 200, 10, null, null, 5000, null);
-        Aluno aluno_exatas = new Aluno("Adversario", "Exatas", 1, 7000, 300, 400, 10, null, null, 4000, null);
+        Aluno Lucas = new Aluno("Lucas", "Exatas", 2, 8000, 400, 600, 20, null, null, 10000);
+        Aluno aluno_bio = new Aluno("Adversario", "Biológicas", 1, 5000, 400, 200, 10, null, null, 5000);
+        Aluno aluno_exatas = new Aluno("Adversario", "Exatas", 1, 7000, 300, 400, 10, null, null, 4000);
         
         Ambiente ufpa = new AmbienteAberto("UFPA", "Cidade Universitária Prof.José da Silveira Netto", 0);
         

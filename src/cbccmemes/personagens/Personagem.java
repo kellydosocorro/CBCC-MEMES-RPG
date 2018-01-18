@@ -1,12 +1,10 @@
 package cbccmemes.personagens;
-import cbccmemes.telas.DescricaoPersonagem;
-import cbccmemes.ambientes.Ambiente;
 import cbccmemes.mochila.*;
-import java.util.Random;
+import javax.swing.ImageIcon;
 
 public abstract class Personagem{
     
-    private static final int LIMITE_MOCHILA = 3;
+    private static final int LIMITE_MOCHILA = 5;
     
     private String nome;
     private int nivel;
@@ -17,7 +15,7 @@ public abstract class Personagem{
     private int velocidade;
     private Item item_equipado;
     private Arma arma_equipada;
-    private String url_imagem;
+    private ImageIcon imagem;
     private double dinheiro;
 
     public Personagem(String nome, int nivel, int vida, int ataque, int defesa, int velocidade, Item item_batalha, Arma arma_batalha, double dinheiro) {
@@ -31,6 +29,7 @@ public abstract class Personagem{
         this.item_equipado = item_batalha;
         this.arma_equipada = arma_batalha;
         this.dinheiro = dinheiro; // Adicionando em 12.12.2017
+        this.imagem = new ImageIcon(getClass().getResource("/cbccmemes/imagens/avatar.png"));
     }
     
     public int getNivel() {
@@ -107,17 +106,17 @@ public abstract class Personagem{
         this.velocidade = velocidade;
     }
     
-    public String getUrl_imagem() {
-        return url_imagem;
+    public ImageIcon getImagem() {
+        return imagem;
     }
 
-    public void setUrl_imagem(String url_imagem) {
-        this.url_imagem = url_imagem;
+    public void setImagem(ImageIcon imagem) {
+        this.imagem = imagem;
     }
     
     public abstract void atacar(Personagem adversario);
     
-    public abstract void descricaoPerosnagem(java.awt.Frame parent);
+    public abstract String descricaoPerosnagem(java.awt.Frame parent);
 
     public int getLimite_vida() {
         return limite_vida;

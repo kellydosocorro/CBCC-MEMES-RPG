@@ -1,29 +1,26 @@
 package cbccmemes.personagens;
 
-import cbccmemes.telas.DescricaoPersonagem;
-import cbccmemes.telas.TelaPrincipal;
 import cbccmemes.ambientes.Ambiente;
 import cbccmemes.mochila.*;
+import java.awt.Frame;
 import java.util.ArrayList;
 
 public class Aluno extends Personagem {
 
     public static final int NIVEL_MAXIMO = 8;
-    private static final String classes_personagem[] = {"Biológicas", "Exatas", "Humanas"};
+    private static String classes_personagem[] = new String[]{"Biológicas", "Exatas", "Humanas"};
 
     public double dinheiro;
-    private ArrayList<Item> itens = new ArrayList<>(getLIMITE_MOCHILA());
-    private ArrayList<Arma> armas = new ArrayList<>(getLIMITE_MOCHILA());
+    private ArrayList<Item> itens = new ArrayList<>();
+    private ArrayList<Arma> armas = new ArrayList<>();
     private int barra_experiencia;
     private String classe_aluno;
-    private Ambiente ambiente_atual;
 
-    public Aluno(String nome, String classe_aluno, int nivel, int vida, int ataque, int defesa, int velocidade, Item item_batalha, Arma arma_batalha, double dinheiro, Ambiente atual) {
+    public Aluno(String nome, String classe_aluno, int nivel, int vida, int ataque, int defesa, int velocidade, Item item_batalha, Arma arma_batalha, double dinheiro) {
         super(nome, nivel, vida, ataque, defesa, velocidade, item_batalha, arma_batalha, dinheiro);
         this.barra_experiencia = 0;
         this.classe_aluno = classe_aluno;
         this.dinheiro = 10000;
-        this.ambiente_atual = atual;
     }
     
     public double getDinheiro() {
@@ -31,10 +28,18 @@ public class Aluno extends Personagem {
     }
     
     public Aluno() {
-        this("", "Biológicas", 1, 1000, 150, 150, 150, null, null, 10000, null);
+        this("", "Biológicas", 1, 1000, 150, 150, 150, null, null, 10000);
         this.barra_experiencia = 0;
     }
 
+    public String[] getClassesPersonagens(){
+        return classes_personagem;
+    }
+    
+    public void setClassesPersonagens(String[] str){
+        classes_personagem = str;
+    }
+    
     public void procurarItem(Ambiente ambiente) {
         
     }
@@ -59,13 +64,30 @@ public class Aluno extends Personagem {
         this.barra_experiencia = barra_experiencia;
     }
 
-    public void setArmaMochila(Arma arma, int indice){
-        if (!this.getArmas().isEmpty())
-            this.getArmas().remove(indice);
-        
-        this.getArmas().add(indice, arma);
+    public boolean addArmaMochila(Arma arma){
+        if (armas.isEmpty() || armas.size() < getLIMITE_MOCHILA()) {
+            armas.add(arma);
+            return true;
+        }
+        return false;
     }
-
+    
+    public boolean removArmaMochila(String nome){
+        return false;
+    }
+    
+    public boolean addItemMochila(Item item){
+        if (itens.isEmpty() || itens.size() < getLIMITE_MOCHILA()){
+            itens.add(item);
+            return true;
+        }
+        
+        return false;
+    }
+        
+    public boolean removItemMochila(String nome){
+        return false;
+    }
     public static Arma[] getArmasDisponiveis(String classe, Arma armas[]) {
         if ( armas == null ) {
             Arma vazia[] = {};
@@ -140,6 +162,7 @@ public class Aluno extends Personagem {
             int i = 0 ;
             for ( Arma aux: this.getArmas()){
                 str[i] = aux.getNome();
+                i++;
             }
             return str;
         } catch (Exception e) {
@@ -149,11 +172,12 @@ public class Aluno extends Personagem {
     
     public String[] getNomesItens() {
         try {
-            String str[] = new String[this.getArmas().size()];
+            String str[] = new String[this.getItens().size()];
             int i = 0 ;
-            this.getItens().forEach((aux) -> {
+            for (Item aux: this.getItens()){
                 str[i] = aux.getNome();
-            });
+                i++;
+            }            
             return str;
         } catch (Exception e) {
             return null;
@@ -229,9 +253,7 @@ public class Aluno extends Personagem {
     }
 
     @Override
-    public void descricaoPerosnagem(java.awt.Frame parent) {
-        DescricaoPersonagem tela = new DescricaoPersonagem(parent, true);
-        tela.setDados(this);
-        tela.setVisible(true);
+    public String descricaoPerosnagem(Frame parent) {
+        return "";
     }
 }

@@ -26,6 +26,7 @@ package cbccmemes.telas;
 
 import cbccmemes.personagens.Aluno;
 import cbccmemes.personagens.Personagem;
+import java.util.Arrays;
 import javax.swing.ImageIcon;
 
 /**
@@ -58,13 +59,17 @@ public class DescricaoPersonagem extends javax.swing.JDialog {
             //Carrega lista de Armas na mochila
             ArmaList.setModel(new javax.swing.AbstractListModel<String>(){
                 String[] strings = aluno.getNomesArmas();
+                @Override
                 public int getSize(){ return strings.length; }
+                @Override
                 public String getElementAt(int i) { return strings[i]; }
             });
             //Carrega lista de Itens na mochila
             ItemList.setModel(new javax.swing.AbstractListModel<String>() {
                 String[] strings = aluno.getNomesItens();
+                @Override
                 public int getSize(){ return strings.length; }
+                @Override
                 public String getElementAt(int i){ return strings[i]; }
             });
             
@@ -90,7 +95,7 @@ public class DescricaoPersonagem extends javax.swing.JDialog {
         velocidade_value.setValue(person.getVelocidade());
         
         try {
-            AvatarPersonagem.setIcon(new ImageIcon(getClass().getResource(person.getUrl_imagem())));
+            AvatarPersonagem.setIcon(person.getImagem());
         } catch (Exception e) {
             AvatarPersonagem.setIcon(new ImageIcon(getClass().getResource("/cbccmemes/imagens/avatar.png")));
         }
@@ -130,7 +135,7 @@ public class DescricaoPersonagem extends javax.swing.JDialog {
         jScrollPane2 = new javax.swing.JScrollPane();
         ArmaList = new javax.swing.JList<>();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         Stats = new javax.swing.JPanel();
         defesa_value = new javax.swing.JSpinner();
         NomeLabel1 = new javax.swing.JLabel();
@@ -294,9 +299,19 @@ public class DescricaoPersonagem extends javax.swing.JDialog {
 
         jTabbedPane1.addTab("Armas", jPanel4);
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Remover");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("jButton2");
+        jButton3.setText("Equipar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout MochilaLayout = new javax.swing.GroupLayout(Mochila);
         Mochila.setLayout(MochilaLayout);
@@ -305,11 +320,11 @@ public class DescricaoPersonagem extends javax.swing.JDialog {
             .addGroup(MochilaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTabbedPane1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(MochilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(MochilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(16, 16, 16))
         );
         MochilaLayout.setVerticalGroup(
             MochilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -317,9 +332,9 @@ public class DescricaoPersonagem extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(MochilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(MochilaLayout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1))
+                        .addComponent(jButton1)
+                        .addGap(3, 3, 3)
+                        .addComponent(jButton3))
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -438,6 +453,14 @@ public class DescricaoPersonagem extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -507,7 +530,7 @@ public class DescricaoPersonagem extends javax.swing.JDialog {
     private javax.swing.JSpinner crg_value;
     private javax.swing.JSpinner defesa_value;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
